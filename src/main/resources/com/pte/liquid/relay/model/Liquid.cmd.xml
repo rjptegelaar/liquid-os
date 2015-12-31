@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE compass-core-meta-data PUBLIC  
+  "-//Compass/Compass Core Meta Data DTD 2.2//EN"  
+  "http://www.compass-project.org/dtd/compass-core-meta-data-2.2.dtd">
+ 
+<compass-core-meta-data>
+ 
+    <meta-data-group id="Liquid" displayName="Liquid Meta Data">
+ 
+        <description>Liquid Meta Data</description>
+        <uri>http://compass/liquid</uri>
+ 
+        <alias id="message" displayName="Message">
+            <description>Message alias</description>
+            <uri>http://compass/liquid/alias/message</uri>
+            <name>message</name>
+        </alias>
+    </meta-data-group>
+ 
+</compass-core-meta-data>

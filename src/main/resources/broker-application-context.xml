@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:amq="http://activemq.apache.org/schema/core" xmlns:jms="http://www.springframework.org/schema/jms"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+							http://www.springframework.org/schema/beans/spring-beans.xsd 
+							http://activemq.apache.org/schema/core 
+                           	http://activemq.apache.org/schema/core/activemq-core.xsd 
+                           	http://www.springframework.org/schema/jms 
+                           	http://www.springframework.org/schema/jms/spring-jms.xsd
+                           	http://www.springframework.org/schema/context
+                           	http://www.springframework.org/schema/context/spring-context.xsd
+                           	http://www.springframework.org/schema/task 
+                           	http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+	<amq:broker id="liquidBroker" useJmx="true" persistent="true"
+		dataDirectory="data" >
+		<amq:persistenceAdapter>
+			<amq:kahaDB directory="${liquid.data.directory}/kahadb" checksumJournalFiles="true"
+				checkForCorruptJournalFiles="true" />
+		</amq:persistenceAdapter>
+		<amq:transportConnectors>
+			<amq:transportConnector uri="tcp://0.0.0.0:${liquid.broker.main.jms.port}?wireFormat.maxInactivityDuration=30000&amp;wireFormat.maxInactivityDurationInitalDelay=10000" id="serverConnector"/>
+			<amq:transportConnector uri="tcp://0.0.0.0:${liquid.broker.relay.jms.port}?wireFormat.maxInactivityDuration=30000&amp;wireFormat.maxInactivityDurationInitalDelay=10000" id="relayConnector" />
+			<amq:transportConnector uri="stomp://0.0.0.0:${liquid.broker.relay.stomp.port}?wireFormat.maxInactivityDuration=30000&amp;wireFormat.maxInactivityDurationInitalDelay=10000" id="relayStompConnector"/>
+		</amq:transportConnectors>
+		<amq:plugins>
+			<amq:simpleAuthenticationPlugin anonymousAccessAllowed="true">
+				<amq:users>
+					<amq:authenticationUser groups="admins" username="${liquid.master.username}" password="${liquid.master.password}"/>
+					<amq:authenticationUser groups="anonymous" username="" password=""/>
+				</amq:users>				
+			</amq:simpleAuthenticationPlugin>
+			<amq:authorizationPlugin>			
+		        <amq:map>
+		        	<amq:authorizationMap>		          
+		            <amq:authorizationEntries>
+		              <amq:authorizationEntry queue="com.pte.liquid.store.in" read="admins" write="admins" admin="admins" />
+		              <amq:authorizationEntry queue="com.pte.liquid.index.in" read="admins" write="admins" admin="admins" />
+		              <amq:authorizationEntry queue="com.pte.liquid.relay.in" read="admins" write="admins" admin="admins" />
+		              <amq:authorizationEntry topic="ActiveMQ.Advisory.>" read="admins" write="admins" admin="admins" />		              		              
+		              <amq:authorizationEntry queue="com.pte.liquid.relay.json.in" read="anonymous,admins" write="anonymous,admins" admin="admins"/>
+		              <amq:authorizationEntry queue="com.pte.liquid.relay.xml.in" read="anonymous,admins" write="anonymous,admins" admin="admins" />  
+		            </amq:authorizationEntries>
+		          </amq:authorizationMap>
+		        </amq:map>			
+			</amq:authorizationPlugin>
+		</amq:plugins>
+	</amq:broker>
+
+	<amq:connectionFactory id="liquidJmsFactory" brokerURL="vm://localhost" userName="${liquid.master.username}" password="${liquid.master.password}"/>
+
+
+	<bean id="liquidSingleConnectionFactory"
+		class="org.springframework.jms.connection.SingleConnectionFactory">
+		<property name="targetConnectionFactory" ref="liquidJmsFactory" />
+		<property name="reconnectOnException" value="true" />
+	</bean>
+	
+	<bean id="liquidCachingConnectionFactory"
+		class="org.springframework.jms.connection.CachingConnectionFactory" primary="true">
+		<property name="targetConnectionFactory" ref="liquidSingleConnectionFactory" />
+		<property name="sessionCacheSize" value="100" />
+	</bean>
+
+</beans>

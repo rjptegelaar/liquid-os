@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="jpa" class="org.apache.camel.component.jpa.JpaComponent">
+	   <property name="entityManagerFactory" ref="liquidEntityManagerFactory"/>
+	   <property name="transactionManager" ref="liquidTxManager"/>
+	</bean>
+
+	<bean id="liquidEntityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" primary="true" depends-on="liquidDataSource">
+		<property name="persistenceUnitName" value="liquid" />
+		<property name="dataSource" ref="liquidDataSource"/>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="liquidTxManager" class="org.springframework.orm.jpa.JpaTransactionManager" primary="true" depends-on="liquidEntityManagerFactory">
+		<property name="entityManagerFactory" ref="liquidEntityManagerFactory" />
+		<property name="jpaDialect" ref="jpaDialect" />
+	</bean>
+	
+	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
+
+	<bean id="compass" class="org.compass.spring.LocalCompassBean" depends-on="liquidTxManager">
+		<property name="resourceLocations">
+			<list>
+				<value>classpath:com/pte/liquid/relay/model/Liquid.cmd.xml</value>
+				<value>classpath:com/pte/liquid/relay/model/Message.cpm.xml</value>
+				<value>classpath:com/pte/liquid/relay/model/MessageHeader.cpm.xml
+				</value>
+				<value>classpath:com/pte/liquid/relay/model/MessagePart.cpm.xml
+				</value>
+			</list>
+		</property>
+		<property name="compassSettings">
+			<props>
+				<prop key="compass.engine.connection">${liquid.data.directory}/compass/</prop>
+				<prop key="compass.transaction.factory">org.compass.spring.transaction.SpringSyncTransactionFactory</prop>
+
+			</props>
+		</property>
+		<property name="transactionManager">
+			<ref bean="liquidTxManager" />
+		</property>
+	</bean>
+
+	<bean id="liquidSearchBean" class="com.pte.liquid.search.SearchBean" scope="singleton" depends-on="compass">
+		<property name="compass">
+			<ref bean="compass" />
+		</property>
+	</bean>
+
+	
+	<bean name="liquidDataSource"
+        class="org.apache.commons.dbcp2.datasources.SharedPoolDataSource"
+        destroy-method="close" primary="false">
+        <property name="connectionPoolDataSource">
+            <bean
+                class="org.apache.commons.dbcp2.cpdsadapter.DriverAdapterCPDS">
+                <property name="driver" value="org.h2.Driver" />
+                <property name="url"
+                    value="jdbc:h2:./${liquid.data.directory}/liquiddb" />
+                <property name="user" value="${liquid.master.username}" />
+                <property name="password" value="${liquid.master.password}" />
+            </bean>
+        </property>
+    </bean>
+	
+</beans>
