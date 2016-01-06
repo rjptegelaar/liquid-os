@@ -11,23 +11,14 @@
 //WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //See the License for the specific language governing permissions and
 //limitations under the License.
-package com.pte.liquid.camel;
+package com.pte.liquid.repo;
 
-import org.apache.camel.Processor;
-import org.apache.camel.builder.RouteBuilder;
-import org.springframework.stereotype.Component;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
 
-import com.pte.liquid.camel.processors.ConvertJsonMessageProcessor;
+import com.pte.liquid.relay.model.Message;
 
-@Component
-public class IndexLiquidMessageRoute extends RouteBuilder{	
-
-	
-    @Override
-    public void configure() throws Exception {
-    	Processor convertJsonMessageProcessor = new ConvertJsonMessageProcessor();
-    	
-    	from("jms:queue:com.pte.liquid.index.in").process(convertJsonMessageProcessor).beanRef("liquidSearchBean", "index");
-    }
+@Repository
+public interface MessageRepository extends PagingAndSortingRepository<Message, String>{
 
 }

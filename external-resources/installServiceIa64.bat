@@ -11,9 +11,9 @@ goto exit
 :gotJavaHome
 
 if exist %JAVA_HOME%\bin\server\jvm.dll (
-    set PR_JVM=%JAVA_HOME%\bin\server\jvm.dll
+    set JVM=%JAVA_HOME%\bin\server\jvm.dll
 ) else (
-    set PR_JVM=%JAVA_HOME%\jre\bin\server\jvm.dll  
+    set JVM=%JAVA_HOME%\jre\bin\server\jvm.dll  
 )
 
 if defined LIQUID_HOME (

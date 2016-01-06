@@ -11,23 +11,21 @@
 //WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //See the License for the specific language governing permissions and
 //limitations under the License.
-package com.pte.liquid.camel;
+package com.pte.liquid.web;
 
-import org.apache.camel.Processor;
-import org.apache.camel.builder.RouteBuilder;
-import org.springframework.stereotype.Component;
-
-import com.pte.liquid.camel.processors.ConvertJsonMessageProcessor;
-
-@Component
-public class IndexLiquidMessageRoute extends RouteBuilder{	
-
+import org.h2.server.web.WebServlet;
+import org.springframework.boot.context.embedded.ServletRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+ 
+@Configuration
+public class H2WebConfiguration{
 	
-    @Override
-    public void configure() throws Exception {
-    	Processor convertJsonMessageProcessor = new ConvertJsonMessageProcessor();
-    	
-    	from("jms:queue:com.pte.liquid.index.in").process(convertJsonMessageProcessor).beanRef("liquidSearchBean", "index");
+	@Bean
+    ServletRegistrationBean h2servletRegistration(){
+        ServletRegistrationBean registrationBean = new ServletRegistrationBean( new WebServlet());
+        registrationBean.addUrlMappings("/console/*");
+        return registrationBean;
     }
-
+	
 }

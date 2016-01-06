@@ -11,23 +11,17 @@
 //WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //See the License for the specific language governing permissions and
 //limitations under the License.
-package com.pte.liquid.camel;
+package com.pte.liquid.web.controller;
 
-import org.apache.camel.Processor;
-import org.apache.camel.builder.RouteBuilder;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.pte.liquid.camel.processors.ConvertJsonMessageProcessor;
+@Controller
+public class MainController {
 
-@Component
-public class IndexLiquidMessageRoute extends RouteBuilder{	
-
+	@RequestMapping("/")
+	public String index() {
+		return "index";
+	}
 	
-    @Override
-    public void configure() throws Exception {
-    	Processor convertJsonMessageProcessor = new ConvertJsonMessageProcessor();
-    	
-    	from("jms:queue:com.pte.liquid.index.in").process(convertJsonMessageProcessor).beanRef("liquidSearchBean", "index");
-    }
-
 }

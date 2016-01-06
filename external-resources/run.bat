@@ -1,1 +1,1 @@
-java -jar liquid.jar
+java -jar liquid-os.jar
