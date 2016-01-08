@@ -14,9 +14,11 @@
 package com.pte.liquid.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
@@ -42,15 +44,21 @@ public class MessageServiceController {
 		gsonBuilder.setDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSZ");
 		gson = gsonBuilder.create();
 	}
-
 	
 	@RequestMapping("/liquid/list")
 	public String list(){
-		PageRequest pg = new PageRequest(1, 10);
-		Page<Message> messagePage = messageRepository.findAll(pg);		
+		PageRequest pg = new PageRequest(1, 10);		
+		Page<Message> messagePage = messageRepository.findAll(pg);			
 		return gson.toJson(messagePage.getContent());
 	}	
 	
+	@RequestMapping("/liquid/filter")
+	public String filter(@RequestParam(value="location") String location){
+		PageRequest pg = new PageRequest(1, 10);		
+		
+		Page<Message> messagePage = messageRepository.filter(location, pg);
+		return gson.toJson(messagePage.getContent());
+	}		
 
 	public SearchBean getLiquidSearchBean() {
 		return liquidSearchBean;

@@ -24,4 +24,9 @@ public class MainController {
 		return "index";
 	}
 	
+	@RequestMapping("/filter/")
+	public String filter() {
+		return "filter";
+	}
+	
 }
