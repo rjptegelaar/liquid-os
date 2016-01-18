@@ -16,17 +16,16 @@ package com.pte.liquid.repo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.pte.liquid.relay.model.Message;
 
 @Repository
-public interface MessageRepository extends PagingAndSortingRepository<Message, String>{
+public interface MessageRepository extends DaoRepository<Message, String>{
 
 	
-@Query("SELECT msg FROM com.pte.liquid.relay.model.Message msg WHERE LOWER(msg.location) = LOWER(:location)")
-public Page<Message> filter(@Param("location") String location, Pageable page);
+	@Query("SELECT msg FROM com.pte.liquid.relay.model.Message msg WHERE LOWER(msg.location) = LOWER(:location) ")
+	public Page<Message> filter(@Param("location") String location, Pageable page);
 	
 }

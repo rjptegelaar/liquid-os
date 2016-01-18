@@ -14,28 +14,27 @@
 package com.pte.liquid.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.mysema.query.BooleanBuilder;
+import com.mysema.query.types.Predicate;
 import com.pte.liquid.relay.model.Message;
+import com.pte.liquid.relay.model.QMessage;
 import com.pte.liquid.repo.MessageRepository;
-import com.pte.liquid.search.SearchBean;
 
 @RestController
 public class MessageServiceController {
 
 	@Autowired
 	private MessageRepository messageRepository;
-	
-	@Autowired
-	private SearchBean liquidSearchBean;
-	
+		
 	private GsonBuilder gsonBuilder = new GsonBuilder();
 	private Gson gson;
 	
@@ -57,18 +56,25 @@ public class MessageServiceController {
 		PageRequest pg = new PageRequest(1, 10);		
 		
 		Page<Message> messagePage = messageRepository.filter(location, pg);
+		
 		return gson.toJson(messagePage.getContent());
 	}		
 
-	public SearchBean getLiquidSearchBean() {
-		return liquidSearchBean;
-	}
+	public Predicate createPredicate(Message msg) {
+	    QMessage qMsg = QMessage.message;
+	    BooleanBuilder booleanBuilder = new BooleanBuilder();
+	    
+	    if (!StringUtils.isEmpty(msg.getCorrelationID())) {
+	      booleanBuilder.and(qMsg.correlationID.contains(msg.getCorrelationID()));
+	    }
+	    if (!StringUtils.isEmpty(msg.getLocation())) {
+	      booleanBuilder.and(qMsg.location.contains(msg.getLocation()));
+	    }
 
+	    return booleanBuilder.getValue();
+	  }
 
-	public void setLiquidSearchBean(SearchBean liquidSearchBean) {
-		this.liquidSearchBean = liquidSearchBean;
-	}
-
+	
 
 	public MessageRepository getMessageRepository() {
 		return messageRepository;

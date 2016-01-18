@@ -1,14 +1,16 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.pte.liquid</groupId>
-  <artifactId>liquid-os</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>liquid-os</name>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.pte.liquid</groupId>
+	<artifactId>liquid-os</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>liquid-os</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<activemq.version>5.7.0</activemq.version>
 		<xbean.version>3.14</xbean.version>
-		<saxon-version>8.7</saxon-version>		
+		<saxon-version>8.7</saxon-version>
+		<querydsl.version>3.7.0</querydsl.version>
 	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -56,17 +58,16 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
 					<archive>
-						<manifest>						
+						<manifest>
 							<addClasspath>true</addClasspath>
-							<classpathPrefix>lib/</classpathPrefix>							
+							<classpathPrefix>lib/</classpathPrefix>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>							
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
 							<Main-Class>com.pte.liquid.Liquid</Main-Class>
 						</manifest>
 					</archive>
 				</configuration>
-			</plugin>			
-			
+			</plugin>
 		</plugins>
 	</build>
 
@@ -151,10 +152,10 @@
 			<artifactId>camel-sql</artifactId>
 			<version>2.15.3</version>
 		</dependency>
-		
+
 		<dependency>
-		   <groupId>org.apache.camel</groupId>
-		   <artifactId>camel-servlet</artifactId>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-servlet</artifactId>
 			<version>2.15.3</version>
 		</dependency>
 		<dependency>
@@ -178,7 +179,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>			
+			<artifactId>gson</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
@@ -190,7 +191,7 @@
 			<artifactId>commons-daemon</artifactId>
 			<version>1.0.15</version>
 		</dependency>
-		<!--WebJars-->
+		<!--WebJars -->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
@@ -200,6 +201,23 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
 			<version>2.1.4</version>
-		</dependency>	
+		</dependency>
+		<dependency>
+			<groupId>com.mysema.querydsl</groupId>
+			<artifactId>querydsl-core</artifactId>
+			<version>${querydsl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mysema.querydsl</groupId>
+			<artifactId>querydsl-apt</artifactId>
+			<version>${querydsl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mysema.querydsl</groupId>
+			<artifactId>querydsl-jpa</artifactId>
+			<version>${querydsl.version}</version>
+		</dependency>
+
+
 	</dependencies>
 </project>
