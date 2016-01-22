@@ -18,7 +18,12 @@
 		<version>1.2.3.RELEASE</version>
 
 	</parent>
-
+	<scm>
+		<connection>scm:git:https://github.com/rjptegelaar/liquid-os.git</connection>
+		<developerConnection>scm:git:git@github.com:rjptegelaar/liquid-os.git</developerConnection>
+		<url>https://github.com/rjptegelaar/liquid-os.git</url>
+    <tag>HEAD</tag>
+  </scm>  
 	<build>
 		<finalName>liquid-os</finalName>
 		<plugins>
@@ -66,6 +71,14 @@
 							<Main-Class>com.pte.liquid.Liquid</Main-Class>
 						</manifest>
 					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<remoteTagging>true</remoteTagging>
+					<resume>false</resume>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -119,7 +132,7 @@
 		<dependency>
 			<groupId>com.pte.liquid.relay</groupId>
 			<artifactId>RelayInterfaces</artifactId>
-			<version>0.1.8-SNAPSHOT</version>
+			<version>0.1.11</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
@@ -220,4 +233,21 @@
 
 
 	</dependencies>
+		<distributionManagement>
+		<repository>
+			<id>bintray</id>
+			<url>https://api.bintray.com/maven/paultegelaar/maven/liquid-os</url>
+		</repository>
+		<snapshotRepository>
+			<id>pte-snapshots</id>
+			<name>internal snapshots</name>
+			<url>${snapshots-url}</url>
+		</snapshotRepository>
+	</distributionManagement>
+	
+		<url>https://github.com/rjptegelaar/liquid-os</url>
+	<issueManagement>
+		<url>https://github.com/rjptegelaar/liquid-os/issues</url>
+	</issueManagement>
+
 </project>
