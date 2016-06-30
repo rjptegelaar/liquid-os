@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.pte.liquid</groupId>
 	<artifactId>liquid-os</artifactId>
-	<version>0.0.21-SNAPSHOT</version>
+	<version>0.0.22-SNAPSHOT</version>
 	<name>liquid-os</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -74,6 +74,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-release-plugin</artifactId>
+				  <version>2.5.2</version>
 				<configuration>
 					<autoVersionSubmodules>true</autoVersionSubmodules>
 					<remoteTagging>true</remoteTagging>
