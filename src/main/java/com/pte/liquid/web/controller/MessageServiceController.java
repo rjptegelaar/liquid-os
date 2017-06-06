@@ -18,6 +18,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -44,19 +45,19 @@ public class MessageServiceController {
 		gson = gsonBuilder.create();
 	}
 	
-	@RequestMapping("/liquid/list")
+
+	@RequestMapping(method = RequestMethod.GET, path="/liquid/list", produces="application/json")
 	public String list(){
 		PageRequest pg = new PageRequest(1, 10);		
 		Page<Message> messagePage = messageRepository.findAll(pg);			
 		return gson.toJson(messagePage.getContent());
 	}	
 	
-	@RequestMapping("/liquid/filter")
+	
 	public String filter(@RequestParam(value="location") String location){
 		PageRequest pg = new PageRequest(1, 10);		
 		
 		Page<Message> messagePage = messageRepository.filter(location, pg);
-		
 		return gson.toJson(messagePage.getContent());
 	}		
 

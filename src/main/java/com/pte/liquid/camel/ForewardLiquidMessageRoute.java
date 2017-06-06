@@ -13,21 +13,17 @@
 //limitations under the License.
 package com.pte.liquid.camel;
 
-import org.apache.camel.Processor;
+import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
-import com.pte.liquid.camel.processors.ConvertJsonMessageProcessor;
-
 @Component
-public class IndexLiquidMessageRoute extends RouteBuilder{	
+public class ForewardLiquidMessageRoute extends RouteBuilder{	
 
 	
     @Override
-    public void configure() throws Exception {
-    	Processor convertJsonMessageProcessor = new ConvertJsonMessageProcessor();
-    	
-    	from("jms:queue:com.pte.liquid.index.in").process(convertJsonMessageProcessor).beanRef("liquidSearchBean", "index");
+    public void configure() throws Exception {    	    	
+    	from("jms:queue:com.pte.liquid.relay.in").log(LoggingLevel.DEBUG, "Processing message").to("jms:queue:com.pte.liquid.store.in");  
     }
 
 }
