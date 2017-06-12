@@ -14,7 +14,7 @@
                            	http://www.springframework.org/schema/task 
                            	http://www.springframework.org/schema/task/spring-task-3.0.xsd">
 
-	<amq:broker id="liquidBroker" useJmx="true" persistent="true"
+	<amq:broker id="liquidBroker" useJmx="true" persistent="true" 
 		dataDirectory="${liquid.data.directory}" >
 		<amq:persistenceAdapter>
 			<amq:kahaDB directory="${liquid.data.directory}/kahadb" checksumJournalFiles="true"

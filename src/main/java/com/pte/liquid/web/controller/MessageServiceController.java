@@ -13,7 +13,6 @@
 //limitations under the License.
 package com.pte.liquid.web.controller;
 
-import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -23,7 +22,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,8 +34,12 @@ import com.mysema.query.types.Predicate;
 import com.pte.liquid.relay.model.Message;
 import com.pte.liquid.relay.model.QMessage;
 import com.pte.liquid.repo.MessageRepository;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiResponse;
 
 @RestController
+@Api(value = "liquid", description = "Liquid Opensource Data API")
 public class MessageServiceController {
 
 	@Autowired
@@ -62,7 +64,9 @@ public class MessageServiceController {
 	 * @return String containing JSON array of messages
 	 */
 	@RequestMapping(method = RequestMethod.GET, path="/liquid/list", produces="application/json")
+	@ApiOperation(value = "List Messages", notes = "Method is used to retrieve messages from the store")
 	public String list(@RequestParam(value="page", required=true, name="page") int page, @RequestParam(value="size", required=true, name="size") int size){
+		
 		PageRequest pg = new PageRequest(page, size);		
 		Page<Message> messagePage = messageRepository.findAll(pg);			
 		return gson.toJson(messagePage.getContent());
@@ -75,6 +79,7 @@ public class MessageServiceController {
 	 * @return String containing JSON array of messages
 	 */
 	@RequestMapping(method = RequestMethod.GET, path="/liquid/get", produces="application/json")
+	@ApiOperation(value = "Get single Message", notes = "Method is used to a single message from the store based on ID")
 	public String get(@RequestParam(value="id", required=true, name="id") String ID){
 		
 		Message msg = messageRepository.findOne(ID);
@@ -95,6 +100,7 @@ public class MessageServiceController {
 	 * @return String containing JSON array of messages
 	 */
 	@RequestMapping(method = RequestMethod.GET, path="/liquid/filter", produces="application/json")
+	@ApiOperation(value = "Filter Messages", notes = "Method is used to retrieve messages from the store based on a filter")
 	public String filter(@RequestParam(value="page", required=true, name="page") int page, 
 						@RequestParam(value="size", required=true, name="size") int size, 
 						@RequestParam(value="location", required=false, name="location") String location, 

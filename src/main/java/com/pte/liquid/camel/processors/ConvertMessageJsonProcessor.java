@@ -32,7 +32,7 @@ public class ConvertMessageJsonProcessor implements Processor{
 	}
 	
 	@Override
-	public void process(Exchange exchange) throws Exception {		
-		exchange.getIn().setBody(gson.toJson(exchange.getIn().getBody(Message.class)));
+	public void process(Exchange exchange) throws Exception {				
+		exchange.getIn().setBody(gson.toJson(exchange.getIn().getBody(Message.class)));				
 	}
 }
