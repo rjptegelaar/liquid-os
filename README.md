@@ -10,6 +10,7 @@ Download the relay (agent):
 Download the interceptors for your ESB:
 
 Talend ESB:
+
 [ ![Download](https://api.bintray.com/packages/paultegelaar/maven/liquid-talend-esb-interceptor/images/download.svg) ](https://bintray.com/paultegelaar/maven/liquid-talend-esb-interceptor/_latestVersion)
 
 [ ![Download](https://api.bintray.com/packages/paultegelaar/maven/liquid-relay-camel-osgi/images/download.svg) ](https://bintray.com/paultegelaar/maven/liquid-relay-camel-osgi/_latestVersion)
