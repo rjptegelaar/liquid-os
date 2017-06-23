@@ -58,7 +58,7 @@
 				<include>*liquid*</include>
 			</includes>
 			<excludes>
-				<exclude>com.pte.liquid.relay:RelayInterfaces</exclude>
+				<exclude>nl.paultegelaar.liquid.relay:RelayInterfaces</exclude>
 			</excludes>
 		</dependencySet>
 	</dependencySets>

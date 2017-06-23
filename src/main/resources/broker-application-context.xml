@@ -41,7 +41,10 @@
 		              <amq:authorizationEntry queue="com.pte.liquid.relay.in" read="admins" write="admins" admin="admins" />
 		              <amq:authorizationEntry topic="ActiveMQ.Advisory.>" read="admins" write="admins" admin="admins" />		              		              
 		              <amq:authorizationEntry queue="com.pte.liquid.relay.json.in" read="anonymous,admins" write="anonymous,admins" admin="admins"/>
-		              <amq:authorizationEntry queue="com.pte.liquid.relay.xml.in" read="anonymous,admins" write="anonymous,admins" admin="admins" />  
+		              <amq:authorizationEntry queue="com.pte.liquid.relay.xml.in" read="anonymous,admins" write="anonymous,admins" admin="admins" />
+		              <amq:authorizationEntry queue="com.pte.liquid.flow.in" read="admins" write="admins" admin="admins" />
+		              <amq:authorizationEntry queue="com.pte.liquid.flow.hash.in" read="admins" write="admins" admin="admins" />
+		              <amq:authorizationEntry queue="com.pte.liquid.flow.message.update.in"	read="admins" write="admins" admin="admins" />  
 		            </amq:authorizationEntries>
 		          </amq:authorizationMap>
 		        </amq:map>			

@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.pte.liquid</groupId>
+	<groupId>nl.paultegelaar.liquid</groupId>
 	<artifactId>liquid-os</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<name>liquid-os</name>
@@ -175,6 +175,24 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+						<configuration>						
+							<keyname>paultegelaar</keyname>
+							<passphrase>${gpg-passphrase}</passphrase>		
+												
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>		
 		</plugins>
 	</build>
 
@@ -244,9 +262,9 @@
 			<artifactId>h2</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.pte.liquid.relay</groupId>
+			<groupId>nl.paultegelaar.liquid.relay</groupId>
 			<artifactId>RelayInterfaces</artifactId>
-			<version>0.1.11</version>
+			<version>1.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>

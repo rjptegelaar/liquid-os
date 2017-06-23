@@ -9,7 +9,10 @@
 		<class>com.pte.liquid.relay.model.Message</class>
 		<class>com.pte.liquid.relay.model.MessageHeader</class>
 		<class>com.pte.liquid.relay.model.MessagePart</class>
-		
+		<class>com.pte.liquid.relay.model.Flow</class>
+		<class>com.pte.liquid.relay.model.FlowStep</class>
+		<class>com.pte.liquid.beans.CrawlCount</class>
+		<class>com.pte.liquid.beans.DeleteFlow</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 	
 		<properties>

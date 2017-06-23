@@ -36,7 +36,6 @@ import com.pte.liquid.relay.model.QMessage;
 import com.pte.liquid.repo.MessageRepository;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
-import com.wordnik.swagger.annotations.ApiResponse;
 
 @RestController
 @Api(value = "liquid", description = "Liquid Opensource Data API")
@@ -68,7 +67,8 @@ public class MessageServiceController {
 	public String list(@RequestParam(value="page", required=true, name="page") int page, @RequestParam(value="size", required=true, name="size") int size){
 		
 		PageRequest pg = new PageRequest(page, size);		
-		Page<Message> messagePage = messageRepository.findAll(pg);			
+		Page<Message> messagePage = messageRepository.findAll(pg);
+		
 		return gson.toJson(messagePage.getContent());
 	}	
 	
