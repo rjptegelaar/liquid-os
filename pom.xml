@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nl.paultegelaar.liquid</groupId>
 	<artifactId>liquid-os</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3-SNAPSHOT</version>
 	<name>liquid-os</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,7 +21,7 @@
 		<connection>scm:git:https://github.com/rjptegelaar/liquid-os.git</connection>
 		<developerConnection>scm:git:git@github.com:rjptegelaar/liquid-os.git</developerConnection>
 		<url>https://github.com/rjptegelaar/liquid-os.git</url>
-		<tag>liquid-os-1.0.2</tag>
+		<tag>HEAD</tag>
 	</scm>
 	<build>
 		<finalName>liquid-os</finalName>
