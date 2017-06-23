@@ -60,10 +60,12 @@ public class FlowServiceController {
 	}
 	
 
-	/**
+
+	 /**
 	 * Method is used to retrieve flows from the store
-	 * 
-	 * 
+	 *  
+	 * @param page
+	 * @param size
 	 * @return String containing JSON array of messages
 	 */
 	@RequestMapping(method = RequestMethod.GET, path="/liquid/flows", produces="application/json")
@@ -153,10 +155,17 @@ public class FlowServiceController {
 		
 	}	
 	
+
 	/**
 	 * Method is used to retrieve flows from the store based on a filter
 	 * 
 	 * 
+	 * @param page
+	 * @param size
+	 * @param flowkey
+	 * @param name
+	 * @param errorStatus
+	 * @param warningStatus
 	 * @return String containing JSON array of flows
 	 */
 	@RequestMapping(method = RequestMethod.GET, path="/liquid/flows/filter", produces="application/json")

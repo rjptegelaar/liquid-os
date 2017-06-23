@@ -55,11 +55,11 @@ public class MessageServiceController {
 		gson = gsonBuilder.create();
 	}
 	
-
 	/**
 	 * Method is used to retrieve messages from the store
 	 * 
-	 * 
+	 * @param page
+	 * @param size
 	 * @return String containing JSON array of messages
 	 */
 	@RequestMapping(method = RequestMethod.GET, path="/liquid/list", produces="application/json")
@@ -90,13 +90,19 @@ public class MessageServiceController {
 			return "[]";
 		}
 		
-	}	
-	
+	}		
 	
 	/**
 	 * Method is used to retrieve messages from the store based on a filter
 	 * 
-	 * 
+	 * @param page
+	 * @param size
+	 * @param location
+	 * @param beforetime
+	 * @param correlationID
+	 * @param parentID
+	 * @param messageOrder
+	 * @param aftertime
 	 * @return String containing JSON array of messages
 	 */
 	@RequestMapping(method = RequestMethod.GET, path="/liquid/filter", produces="application/json")
