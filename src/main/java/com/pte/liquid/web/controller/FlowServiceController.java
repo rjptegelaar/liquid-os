@@ -75,16 +75,7 @@ public class FlowServiceController {
 	 * 
 	 * @param flowKey, FlowKey is the Unique Flow identifier
 	 * @param name, Name of the flow
-	 * @return ResponseEntity<>, Affected flow
-	 */
-	
-	
-	
-	/**
-	 * 
-	 * @param flowKey
-	 * @param name
-	 * @return ResponseEntity<>, Affected flow
+	 * @return Affected flow
 	 */
 	@RequestMapping(method = RequestMethod.POST, path="/liquid/flows/name")
 	@ApiOperation(value = "Set flow name", notes = "Method is used to name flows")
@@ -110,7 +101,7 @@ public class FlowServiceController {
 	 * 
 	 * @param flowKey, FlowKey is the Unique Flow identifier
 	 * @param errorStatus, Boolean indicating if a flow is an error flow. 
-	 * @return ResponseEntity<>, Affected flow
+	 * @return Affected flow
 	 */
 	@RequestMapping(method = RequestMethod.POST, path="/liquid/flows/errorstatus")
 	@ApiOperation(value = "Set errorstatus", notes = "Method is used to set the errorstatus on a flow.")
@@ -136,7 +127,7 @@ public class FlowServiceController {
 	 * 
 	 * @param flowKey, FlowKey is the Unique Flow identifier
 	 * @param warningStatus, Boolean indicating if a flow is an warning flow.
-	 * @return ResponseEntity<>, Affected flow
+	 * @return Affected flow
 	 */
 	@RequestMapping(method = RequestMethod.POST, path="/liquid/flows/warningstatus")
 	@ApiOperation(value = "Set errorstatus", notes = "Method is used to set the errorstatus on a flow")
