@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nl.paultegelaar.liquid</groupId>
 	<artifactId>liquid-os</artifactId>
-	<version>1.0.6-SNAPSHOT</version>
+	<version>1.0.5-SNAPSHOT</version>
 	<name>liquid-os</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -399,5 +399,20 @@
 	<issueManagement>
 		<url>https://github.com/rjptegelaar/liquid-os/issues</url>
 	</issueManagement>
+<licenses>
+		<license>
+			<name>The Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
 
+	<developers>
+		<developer>
+			<name>Paul Tegelaar</name>
+			<email>tegelaarpaul@gmail.com</email>
+			<organization>Paul Tegelaar</organization>
+			<organizationUrl>http://www.paultegelaar.nl</organizationUrl>
+		</developer>
+	</developers>
+	<description>Liquid is an Opensource Message Monitoring solution for several ESB systems. Free to download and free to use.</description>
 </project>
