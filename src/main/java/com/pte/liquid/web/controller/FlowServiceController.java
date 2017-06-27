@@ -13,15 +13,9 @@
 //limitations under the License.
 package com.pte.liquid.web.controller;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,9 +28,7 @@ import com.google.gson.GsonBuilder;
 import com.mysema.query.BooleanBuilder;
 import com.mysema.query.types.Predicate;
 import com.pte.liquid.relay.model.Flow;
-import com.pte.liquid.relay.model.Message;
 import com.pte.liquid.relay.model.QFlow;
-import com.pte.liquid.relay.model.QMessage;
 import com.pte.liquid.repo.FlowRepository;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -64,9 +56,9 @@ public class FlowServiceController {
 	 /**
 	 * Method is used to retrieve flows from the store
 	 *  
-	 * @param page
-	 * @param size
-	 * @return String containing JSON array of messages
+	 * @param page, Page number
+	 * @param size, Size of the page
+	 * @return String, JSON array of messages
 	 */
 	@RequestMapping(method = RequestMethod.GET, path="/liquid/flows", produces="application/json")
 	@ApiOperation(value = "List Flows", notes = "Method is used to retrieve flows from the store")
@@ -81,9 +73,9 @@ public class FlowServiceController {
 	 * Method is used to name a flow. Pass unique flowkey and name.
 	 * 
 	 * 
-	 * @param flowKey
-	 * @param name
-	 * @return Flow
+	 * @param flowKey, FlowKey is the Unique Flow identifier
+	 * @param name, Name of the flow
+	 * @return Flow, Affected flow
 	 */
 	@RequestMapping(method = RequestMethod.POST, path="/liquid/flows/name")
 	@ApiOperation(value = "Set flow name", notes = "Method is used to name flows")
@@ -107,12 +99,12 @@ public class FlowServiceController {
 	 * Method is used to set the error status on a flow.
 	 * 
 	 * 
-	 * @param flowKey
-	 * @param status
-	 * @return Flow
+	 * @param flowKey, FlowKey is the Unique Flow identifier
+	 * @param status, Boolean indicating if a flow is an error flow. 
+	 * @return Flow, Affected flow
 	 */
 	@RequestMapping(method = RequestMethod.POST, path="/liquid/flows/errorstatus")
-	@ApiOperation(value = "Set errorstatus", notes = "Method is used to set the errorstatus on a flow")
+	@ApiOperation(value = "Set errorstatus", notes = "Method is used to set the errorstatus on a flow.")
 	public ResponseEntity<String> setErrorStatus(@RequestParam(value="flowkey", required=true, name="flowkey") String flowKey, @RequestParam(value="errorstatus", required=true, name="errorstatus") boolean errorStatus){
 		
 		Flow flow = flowRepository.findOne(flowKey);
@@ -133,9 +125,9 @@ public class FlowServiceController {
 	 * Method is used to set the warning status on a flow.
 	 * 
 	 * 
-	 * @param flowKey
-	 * @param status
-	 * @return Flow
+	 * @param flowKey, FlowKey is the Unique Flow identifier
+	 * @param status, Boolean indicating if a flow is an warning flow.
+	 * @return Flow, Affected flow
 	 */
 	@RequestMapping(method = RequestMethod.POST, path="/liquid/flows/warningstatus")
 	@ApiOperation(value = "Set errorstatus", notes = "Method is used to set the errorstatus on a flow")
@@ -160,12 +152,12 @@ public class FlowServiceController {
 	 * Method is used to retrieve flows from the store based on a filter
 	 * 
 	 * 
-	 * @param page
-	 * @param size
-	 * @param flowkey
-	 * @param name
-	 * @param errorStatus
-	 * @param warningStatus
+	 * @param page, Page number
+	 * @param size, Size of the page
+	 * @param flowkey, FlowKey is the Unique Flow identifier
+	 * @param name, Name of the flow
+	 * @param errorStatus, Boolean indicating if a flow is an error flow.
+	 * @param warningStatus, Boolean indicating if a flow is an warning flow.
 	 * @return String containing JSON array of flows
 	 */
 	@RequestMapping(method = RequestMethod.GET, path="/liquid/flows/filter", produces="application/json")

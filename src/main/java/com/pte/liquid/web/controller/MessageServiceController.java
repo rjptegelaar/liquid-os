@@ -58,9 +58,9 @@ public class MessageServiceController {
 	/**
 	 * Method is used to retrieve messages from the store
 	 * 
-	 * @param page
-	 * @param size
-	 * @return String containing JSON array of messages
+	 * @param page, Page number.
+	 * @param size, Size of the page.
+	 * @return String containing JSON array of messages.
 	 */
 	@RequestMapping(method = RequestMethod.GET, path="/liquid/list", produces="application/json")
 	@ApiOperation(value = "List Messages", notes = "Method is used to retrieve messages from the store")
@@ -75,8 +75,8 @@ public class MessageServiceController {
 	/**
 	 * Method is used to a single message from the store based on ID
 	 * 
-	 * 
-	 * @return String containing JSON array of messages
+	 * @param ID, Unique Message ID.
+	 * @return String containing JSON array of messages.
 	 */
 	@RequestMapping(method = RequestMethod.GET, path="/liquid/get", produces="application/json")
 	@ApiOperation(value = "Get single Message", notes = "Method is used to a single message from the store based on ID")
@@ -95,14 +95,14 @@ public class MessageServiceController {
 	/**
 	 * Method is used to retrieve messages from the store based on a filter
 	 * 
-	 * @param page
-	 * @param size
-	 * @param location
-	 * @param beforetime
-	 * @param correlationID
-	 * @param parentID
-	 * @param messageOrder
-	 * @param aftertime
+	 * @param page, Page number.
+	 * @param size, Size of the page.
+	 * @param location, Location where message was logged.
+	 * @param beforetime, Message was logged before this time.
+	 * @param correlationID, CorrelationID of message.
+	 * @param parentID, Unique ID of the Message preceding this message.
+	 * @param messageOrder, Order the messages where logged within the flow
+	 * @param aftertime, , Message was logged after this time.
 	 * @return String containing JSON array of messages
 	 */
 	@RequestMapping(method = RequestMethod.GET, path="/liquid/filter", produces="application/json")
