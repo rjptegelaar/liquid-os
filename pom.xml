@@ -356,7 +356,7 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>curl -T pom.xml -u${bintray-username}:${bintray-password} https://api.bintray.com/content/paultegelaar/RPM/liquid-os/test/version</executable>													
+							<executable>curl -T pom.xml -u${bintray-username}:${bintray-apikey} https://api.bintray.com/content/paultegelaar/RPM/liquid-os/test/version</executable>													
 						</configuration>
 					</execution>
 				</executions>
