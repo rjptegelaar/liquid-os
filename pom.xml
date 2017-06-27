@@ -307,7 +307,7 @@
 							<groupname>liquid</groupname>
 							<dependency>
 								<includes>
-									<include>*</include>
+									<include>.*</include>
 								</includes>
 
 							</dependency>
