@@ -356,7 +356,8 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>curl -T liquid-os/target/rpm/liquid-os/RPMS/noarch/${artifact.artifactId}${dashClassifier?}${env.releaseVersion}.noarch.rpm -u${bintray-apiuser}:${bintray-apikey} https://api.bintray.com/content/paultegelaar/RPM/liquid-os/${env.releaseVersion}</executable>													
+							<executable>curl</executable>
+							<commandlineArgs>-T liquid-os/target/rpm/liquid-os/RPMS/noarch/${artifact.artifactId}${dashClassifier?}${env.releaseVersion}.noarch.rpm -u${bintray-apiuser}:${bintray-apikey} https://api.bintray.com/content/paultegelaar/RPM/liquid-os/${env.releaseVersion}</commandlineArgs>													
 						</configuration>
 					</execution>
 				</executions>
