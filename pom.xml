@@ -313,7 +313,7 @@
 				                </excludes>
 							</dependency>
 						</mapping>
-						<!-- <mapping>
+						<mapping>
 							<directory>/opt/liquid-os</directory>
 							<filemode>770</filemode>
 							<username>liquid</username>
@@ -326,7 +326,7 @@
 									<exclude>nl.paultegelaar.liquid.relay:RelayInterfaces</exclude>
 								</excludes>
 							</dependency>
-						</mapping> -->
+						</mapping>
 
 						<mapping>
 							<directory>/etc/init.d</directory>
