@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nl.paultegelaar.liquid</groupId>
 	<artifactId>liquid-os</artifactId>
@@ -357,7 +358,10 @@
 						</goals>
 						<configuration>
 							<executable>curl</executable>
-							<commandlineArgs>-T liquid-os/target/rpm/liquid-os/RPMS/noarch/${artifact.artifactId}${dashClassifier?}${env.releaseVersion}.noarch.rpm -u${bintray-apiuser}:${bintray-apikey} https://api.bintray.com/content/paultegelaar/RPM/liquid-os/${env.releaseVersion}</commandlineArgs>													
+							<commandlineArgs>-T liquid-os/target/rpm/liquid-os/RPMS/noarch/${artifact.artifactId}${dashClassifier?}${RELEASE_VERSION}.noarch.rpm	-u${bintray-apiuser}:${bintray-apikey} https://api.bintray.com/content/paultegelaar/RPM/liquid-os/${RELEASE_VERSION}</commandlineArgs>
+							<environmentVariables>
+								<RELEASE_VERSION>${env.releaseVersion}</RELEASE_VERSION>
+							</environmentVariables>
 						</configuration>
 					</execution>
 				</executions>
