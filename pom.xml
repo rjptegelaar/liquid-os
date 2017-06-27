@@ -359,9 +359,8 @@
 							<executable>curl</executable>
 							<arguments>
 								<argument>-vvf</argument>
-								<argument>-u${bintray-username}:${bintray-password}</argument>
-								<argument>-H "Content-Type: application/json"</argument>
-								<argument>-X POST https://api.bintray.com/packages/paultegelaar/RPM/liquid-os/versions</argument>
+								<argument>-u${bintray-username}:${bintray-password} -H "Content-Type: application/json" \</argument>								
+								<argument>-X POST https://api.bintray.com/packages/paultegelaar/RPM/liquid-os/versions \</argument>
 								<argument>--data "{\"name\": \"${env.releaseVersion}\", \"github_use_tag_release_notes\": false }"</argument>
 							</arguments>							
 						</configuration>
