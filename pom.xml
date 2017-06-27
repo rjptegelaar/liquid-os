@@ -308,9 +308,9 @@
 							<username>liquid</username>
 							<groupname>liquid</groupname>
 							<dependency>
-								<includes>
-									<include>.*</include>
-								</includes>
+				                <excludes>
+				                  <exclude>junit:junit</exclude>
+				                </excludes>
 							</dependency>
 						</mapping>
 						<!-- <mapping>
