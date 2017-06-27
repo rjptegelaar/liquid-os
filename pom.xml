@@ -213,6 +213,9 @@
 					<packager>Paul Tegelaar</packager>
 					<prefix>/opt</prefix>
 					<changelogFile>target/changelog.xml</changelogFile>
+					<defineStatements>
+						<defineStatement>_unpackaged_files_terminate_build 0</defineStatement>
+					</defineStatements>
 					<mappings>
 						<mapping>
 							<directory>/opt/liquid-os/bin</directory>
@@ -299,34 +302,13 @@
 
 							</sources>
 						</mapping>
-						<!-- 
-						<mapping>
-							<directory>/opt/liquid-os/lib</directory>
-							<filemode>770</filemode>
-							<username>liquid</username>
-							<groupname>liquid</groupname>
-							<dependency>
-								<includes>
-									<include>.*</include>
-								</includes>
-
-							</dependency>
-						</mapping>
-						<mapping>
-							<directory>/opt/liquid-os</directory>
-							<filemode>770</filemode>
-							<username>liquid</username>
-							<groupname>liquid</groupname>
-							<dependency>
-								<includes>
-									<include>*liquid*</include>
-								</includes>
-								<excludes>
-									<exclude>nl.paultegelaar.liquid.relay:RelayInterfaces</exclude>
-								</excludes>
-							</dependency>
-						</mapping>
- -->
+						<!-- <mapping> <directory>/opt/liquid-os/lib</directory> <filemode>770</filemode> 
+							<username>liquid</username> <groupname>liquid</groupname> <dependency> <includes> 
+							<include>.*</include> </includes> </dependency> </mapping> <mapping> <directory>/opt/liquid-os</directory> 
+							<filemode>770</filemode> <username>liquid</username> <groupname>liquid</groupname> 
+							<dependency> <includes> <include>*liquid*</include> </includes> <excludes> 
+							<exclude>nl.paultegelaar.liquid.relay:RelayInterfaces</exclude> </excludes> 
+							</dependency> </mapping> -->
 
 						<mapping>
 							<directory>/etc/init.d</directory>
@@ -336,9 +318,9 @@
 							<sources>
 								<source>
 									<location>external-resources/LiquidService</location>
-								</source>								
+								</source>
 							</sources>
-						</mapping>						
+						</mapping>
 					</mappings>
 					<preinstallScriptlet>
 						<script>echo "Installing Liquid Opensource now"</script>
