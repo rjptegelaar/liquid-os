@@ -356,11 +356,7 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>curl -X POST https://api.bintray.com/packages/paultegelaar/RPM/liquid-os/versions</executable>							
-							<arguments>
-								<argument>-vvf</argument>
-								<argument>-u${bintray-username}:${bintray-password} -H "Content-Type: application/json" --data "{\"name\": \"${env.releaseVersion}\", \"github_use_tag_release_notes\": false }"</argument>								
-							</arguments>							
+							<executable>curl -T pax_global_header -u${bintray-username}:${bintray-password} https://api.bintray.com/content/paultegelaar/RPM/liquid-os/test/version</executable>													
 						</configuration>
 					</execution>
 				</executions>
