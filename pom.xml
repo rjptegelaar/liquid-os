@@ -302,13 +302,31 @@
 
 							</sources>
 						</mapping>
-						<!-- <mapping> <directory>/opt/liquid-os/lib</directory> <filemode>770</filemode> 
-							<username>liquid</username> <groupname>liquid</groupname> <dependency> <includes> 
-							<include>.*</include> </includes> </dependency> </mapping> <mapping> <directory>/opt/liquid-os</directory> 
-							<filemode>770</filemode> <username>liquid</username> <groupname>liquid</groupname> 
-							<dependency> <includes> <include>*liquid*</include> </includes> <excludes> 
-							<exclude>nl.paultegelaar.liquid.relay:RelayInterfaces</exclude> </excludes> 
-							</dependency> </mapping> -->
+						<mapping>
+							<directory>/opt/liquid-os/lib</directory>
+							<filemode>770</filemode>
+							<username>liquid</username>
+							<groupname>liquid</groupname>
+							<dependency>
+								<includes>
+									<include>.*</include>
+								</includes>
+							</dependency>
+						</mapping>
+						<!-- <mapping>
+							<directory>/opt/liquid-os</directory>
+							<filemode>770</filemode>
+							<username>liquid</username>
+							<groupname>liquid</groupname>
+							<dependency>
+								<includes>
+									<include>*liquid*</include>
+								</includes>
+								<excludes>
+									<exclude>nl.paultegelaar.liquid.relay:RelayInterfaces</exclude>
+								</excludes>
+							</dependency>
+						</mapping> -->
 
 						<mapping>
 							<directory>/etc/init.d</directory>
