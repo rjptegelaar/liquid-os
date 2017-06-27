@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nl.paultegelaar.liquid</groupId>
 	<artifactId>liquid-os</artifactId>
@@ -185,14 +186,171 @@
 						<goals>
 							<goal>sign</goal>
 						</goals>
-						<configuration>						
+						<configuration>
 							<keyname>paultegelaar</keyname>
-							<passphrase>${gpg-passphrase}</passphrase>		
-												
+							<passphrase>${gpg-passphrase}</passphrase>
+
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>		
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>rpm-maven-plugin</artifactId>
+				<version>2.1.5</version>
+				<executions>
+					<execution>
+						<id>generate-rpm</id>
+						<goals>
+							<goal>rpm</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<license>The Apache License, Version 2.0</license>
+					<distribution>${project.artifactId}</distribution>
+					<group>Applications/Engineering</group>
+					<packager>Paul Tegelaar</packager>
+					<prefix>/opt</prefix>
+					<changelogFile>target/changelog.xml</changelogFile>
+					<mappings>
+						<mapping>
+							<directory>/opt/liquid-os/bin</directory>
+							<filemode>770</filemode>
+							<username>liquid</username>
+							<groupname>liquid</groupname>
+							<sources>
+								<source>
+									<location>external-resources/bin/</location>
+									<includes>
+										<include>*</include>
+									</includes>
+								</source>
+							</sources>
+						</mapping>
+						<mapping>
+							<directory>/opt/liquid-os</directory>
+							<filemode>770</filemode>
+							<username>liquid</username>
+							<groupname>liquid</groupname>
+							<sources>
+								<source>
+									<location>external-resources</location>
+									<includes>
+										<include>*</include>
+									</includes>
+								</source>
+							</sources>
+						</mapping>
+						<mapping>
+							<directory>/opt/liquid-os/bin/ia64</directory>
+							<filemode>770</filemode>
+							<username>liquid</username>
+							<groupname>liquid</groupname>
+							<sources>
+								<source>
+									<location>external-resources/bin/ia64</location>
+									<includes>
+										<include>*.exe</include>
+									</includes>
+								</source>
+							</sources>
+						</mapping>
+						<mapping>
+							<directory>/opt/liquid-os/bin/amd64</directory>
+							<filemode>770</filemode>
+							<username>liquid</username>
+							<groupname>liquid</groupname>
+							<sources>
+								<source>
+									<location>external-resources/bin/amd64</location>
+									<includes>
+										<include>*.exe</include>
+									</includes>
+								</source>
+							</sources>
+						</mapping>
+						<mapping>
+							<directory>/opt/liquid-os/config</directory>
+							<filemode>770</filemode>
+							<username>liquid</username>
+							<groupname>liquid</groupname>
+							<sources>
+								<source>
+									<location>config</location>
+									<includes>
+										<include>application.properties</include>
+									</includes>
+								</source>
+							</sources>
+						</mapping>
+						<mapping>
+							<directory>/opt/liquid-os/logs</directory>
+							<filemode>770</filemode>
+							<username>liquid</username>
+							<groupname>liquid</groupname>
+							<sources>
+								<source>
+									<location>logs</location>
+									<excludes>
+										<exclude>**/*</exclude>
+									</excludes>
+								</source>
+
+							</sources>
+						</mapping>
+
+						<mapping>
+							<directory>/opt/liquid-os/lib</directory>
+							<filemode>770</filemode>
+							<username>liquid</username>
+							<groupname>liquid</groupname>
+							<dependency>
+								<includes>
+									<include>*</include>
+								</includes>
+
+							</dependency>
+						</mapping>
+						<mapping>
+							<directory>/opt/liquid-os</directory>
+							<filemode>770</filemode>
+							<username>liquid</username>
+							<groupname>liquid</groupname>
+							<dependency>
+								<includes>
+									<include>*liquid*</include>
+								</includes>
+								<excludes>
+									<exclude>nl.paultegelaar.liquid.relay:RelayInterfaces</exclude>
+								</excludes>
+							</dependency>
+						</mapping>
+
+
+						<mapping>
+							<directory>/etc/init.d</directory>
+							<filemode>750</filemode>
+							<username>liquid</username>
+							<groupname>liquid</groupname>
+							<sources>
+								<source>
+									<location>external-resources/LiquidService</location>
+								</source>								
+							</sources>
+						</mapping>						
+					</mappings>
+					<preinstallScriptlet>
+						<script>echo "Installing Liquid Opensource now"</script>
+					</preinstallScriptlet>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changelog-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -399,7 +557,7 @@
 	<issueManagement>
 		<url>https://github.com/rjptegelaar/liquid-os/issues</url>
 	</issueManagement>
-<licenses>
+	<licenses>
 		<license>
 			<name>The Apache License, Version 2.0</name>
 			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
