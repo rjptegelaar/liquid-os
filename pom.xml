@@ -320,7 +320,7 @@
 							<groupname>liquid</groupname>
 							<sources>
 								<source>
-									<location>target/${artifact.artifactId}${dashClassifier?}.${artifact.extension}</location>
+									<location>target/liquid-os.jar</location>
 								</source>
 							</sources>
 						</mapping>
