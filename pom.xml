@@ -299,7 +299,7 @@
 
 							</sources>
 						</mapping>
-
+						<!-- 
 						<mapping>
 							<directory>/opt/liquid-os/lib</directory>
 							<filemode>770</filemode>
@@ -326,7 +326,7 @@
 								</excludes>
 							</dependency>
 						</mapping>
-
+ -->
 
 						<mapping>
 							<directory>/etc/init.d</directory>
