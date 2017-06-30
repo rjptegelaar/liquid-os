@@ -202,8 +202,7 @@
 						</goals>
 					</execution>
 				</executions>
-				<configuration>
-					<name>liquid-os.rpm</name>
+				<configuration>								
 					<license>The Apache License, Version 2.0</license>
 					<distribution>${project.artifactId}</distribution>
 					<group>Applications/Engineering</group>
