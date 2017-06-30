@@ -203,6 +203,7 @@
 					</execution>
 				</executions>
 				<configuration>
+					<name>liquid-os.rpm</name>
 					<license>The Apache License, Version 2.0</license>
 					<distribution>${project.artifactId}</distribution>
 					<group>Applications/Engineering</group>
@@ -356,12 +357,13 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>curl</executable>
+							<executable>curl</executable>							
 							<commandlineArgs>-T	'target/rpm/liquid-os/RPMS/noarch/liquid-os-${releaseVersion}-1.noarch.rpm' -u${bintray-apiuser}:${bintray-apikey} https://api.bintray.com/content/paultegelaar/RPM/liquid-os/${releaseVersion}/publish</commandlineArgs>
 							<environmentVariables>
 								<releaseVersion>dummy</releaseVersion>
 							</environmentVariables>
-						</configuration>
+							<outputFile>curl-fault.log</outputFile>							
+						</configuration>						
 					</execution>
 				</executions>
 			</plugin>
