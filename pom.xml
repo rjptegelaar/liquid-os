@@ -357,7 +357,7 @@
 						</goals>
 						<configuration>
 							<executable>curl</executable>
-							<commandlineArgs>-T	liquid-os/target/rpm/liquid-os/RPMS/noarch/liquid-os-${releaseVersion}-1.noarch.rpm -u${bintray-apiuser}:${bintray-apikey} https://api.bintray.com/content/paultegelaar/RPM/liquid-os/${releaseVersion}/publish</commandlineArgs>
+							<commandlineArgs>-T	'liquid-os/target/rpm/liquid-os/RPMS/noarch/liquid-os-${releaseVersion}-1.noarch.rpm' -u${bintray-apiuser}:${bintray-apikey} https://api.bintray.com/content/paultegelaar/RPM/liquid-os/${releaseVersion}/publish</commandlineArgs>
 							<environmentVariables>
 								<releaseVersion>dummy</releaseVersion>
 							</environmentVariables>
