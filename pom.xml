@@ -357,9 +357,10 @@
 						</goals>
 						<configuration>
 							<executable>curl</executable>							
-							<commandlineArgs>-T	'target/rpm/liquid-os/RPMS/noarch/liquid-os-${releaseVersion}-1.noarch.rpm' -u${bintray-apiuser}:${bintray-apikey} https://api.bintray.com/content/paultegelaar/RPM/liquid-os/${releaseVersion}/publish</commandlineArgs>
+							<commandlineArgs>-T	'${WORKSPACE}/target/rpm/liquid-os/RPMS/noarch/liquid-os-${releaseVersion}-1.noarch.rpm' -u${bintray-apiuser}:${bintray-apikey} https://api.bintray.com/content/paultegelaar/RPM/liquid-os/${releaseVersion}/publish</commandlineArgs>
 							<environmentVariables>
 								<releaseVersion>dummy</releaseVersion>
+								<WORKSPACE>dummy</WORKSPACE>
 							</environmentVariables>
 							<outputFile>curl-fault.log</outputFile>							
 						</configuration>						
