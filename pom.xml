@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nl.paultegelaar.liquid</groupId>
 	<artifactId>liquid-os</artifactId>
-	<version>1.0.25-SNAPSHOT</version>
+	<version>1.0.24-SNAPSHOT</version>
 	<name>liquid-os</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -357,7 +357,7 @@
 						</goals>
 						<configuration>
 							<executable>curl</executable>							
-							<commandlineArgs>-T${WORKSPACE}/target/rpm/liquid-os/RPMS/noarch/liquid-os-${releaseVersion}-1.noarch.rpm -u${bintray-apiuser}:${bintray-apikey} https://api.bintray.com/content/paultegelaar/RPM/liquid-os/${releaseVersion}/publish</commandlineArgs>
+							<commandlineArgs>-T${WORKSPACE}/target/rpm/liquid-os/RPMS/noarch/liquid-os-${releaseVersion}-1.noarch.rpm -u${bintray-apiuser}:${bintray-apikey} https://api.bintray.com/content/paultegelaar/RPM/liquid-os/${releaseVersion}</commandlineArgs>
 							<environmentVariables>
 								<releaseVersion>dummy</releaseVersion>
 								<WORKSPACE>dummy</WORKSPACE>
