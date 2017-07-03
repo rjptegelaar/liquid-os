@@ -340,7 +340,7 @@
 						<script>echo "Installing Liquid Opensource now"</script>
 					</preinstallScriptlet>
 					<preinstallScriptlet>
-  						<scriptFile>/src/main/bin/preinstall.sh</scriptFile>
+  						<scriptFile>src/main/bin/preinstall.sh</scriptFile>
   						<fileEncoding>utf-8</fileEncoding>
 					</preinstallScriptlet>
 				</configuration>
