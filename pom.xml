@@ -212,6 +212,9 @@
 					<defineStatements>
 						<defineStatement>_unpackaged_files_terminate_build 0</defineStatement>
 					</defineStatements>
+					<requires>
+            			<require>jsvc</require>
+          			</requires>
 					<mappings>
 						<mapping>
 							<directory>/opt/liquid-os/bin</directory>
@@ -280,7 +283,7 @@
 									<includes>
 										<include>application.properties</include>
 									</includes>
-								</source>
+								</source>								
 							</sources>
 						</mapping>
 						<mapping>
@@ -335,6 +338,10 @@
 					</mappings>
 					<preinstallScriptlet>
 						<script>echo "Installing Liquid Opensource now"</script>
+					</preinstallScriptlet>
+					<preinstallScriptlet>
+  						<scriptFile>/src/main/bin/preinstall.sh</scriptFile>
+  						<fileEncoding>utf-8</fileEncoding>
 					</preinstallScriptlet>
 				</configuration>
 			</plugin>
