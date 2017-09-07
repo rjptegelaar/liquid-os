@@ -323,26 +323,33 @@
 								</source>
 							</sources>
 						</mapping>
+
+						<mapping>
+							<directory>/etc/init.d</directory>						
+							<sources>
+								<source>
+									<location>external-resources/LiquidService</location>
+								</source>
+							</sources>
+						</mapping>
 					</mappings>
 					<preinstallScriptlet>
 						<script>echo "Installing Liquid Opensource now"</script>
 					</preinstallScriptlet>
 					<preinstallScriptlet>
+						<script>export LIQUID_HOME=/opt/liquid-os</script>
+					</preinstallScriptlet>
+					<preinstallScriptlet>
   						<scriptFile>src/main/bin/preinstall.sh</scriptFile>
   						<fileEncoding>utf-8</fileEncoding>
 					</preinstallScriptlet>
-					<postinstallScriptlet>						
-						<script>sudo cp /opt/liquid-os/LiquidService /etc/init.d/</script>
-						<script>sudo chmod +x /etc/init.d/LiquidService</script>
-						<script>sudo chown liquid:liquid /etc/init.d/LiquidService</script>
-					</postinstallScriptlet>
 					<postinstallScriptlet>
   						<scriptFile>external-resources/setup.sh</scriptFile>
   						<fileEncoding>utf-8</fileEncoding>					
 					</postinstallScriptlet>
-					<preinstallScriptlet>
+					<postinstallScriptlet>
 						<script>echo "Done Installing Liquid Opensource"</script>
-					</preinstallScriptlet>
+					</postinstallScriptlet>
 				</configuration>
 			</plugin>
 
