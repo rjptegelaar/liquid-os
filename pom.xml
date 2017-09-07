@@ -343,6 +343,11 @@
   						<scriptFile>src/main/bin/preinstall.sh</scriptFile>
   						<fileEncoding>utf-8</fileEncoding>
 					</preinstallScriptlet>
+					<postinstallScriptlet>						
+						<script>cp LiquidService /etc/init.d/</script>
+						<script>chmod +x /etc/init.d/LiquidService</script>
+						<script>chown liquid:liquid /etc/init.d/LiquidService</script>
+					</postinstallScriptlet>
 					<postinstallScriptlet>
   						<scriptFile>external-resources/setup.sh</scriptFile>
   						<fileEncoding>utf-8</fileEncoding>					
