@@ -324,7 +324,7 @@
 							</sources>
 						</mapping>
 
-						<mapping>
+						<!-- <mapping>
 							<directory>/etc/init.d</directory>
 							<filemode>750</filemode>
 							<username>liquid</username>
@@ -334,7 +334,7 @@
 									<location>external-resources/LiquidService</location>
 								</source>
 							</sources>
-						</mapping>
+						</mapping> -->
 					</mappings>
 					<preinstallScriptlet>
 						<script>echo "Installing Liquid Opensource now"</script>
