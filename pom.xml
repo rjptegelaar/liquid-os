@@ -344,9 +344,9 @@
   						<fileEncoding>utf-8</fileEncoding>
 					</preinstallScriptlet>
 					<postinstallScriptlet>						
-						<script>cp /opt/liquid-os/LiquidService /etc/init.d/</script>
-						<script>chmod +x /etc/init.d/LiquidService</script>
-						<script>chown liquid:liquid /etc/init.d/LiquidService</script>
+						<script>sudo cp /opt/liquid-os/LiquidService /etc/init.d/</script>
+						<script>sudo chmod +x /etc/init.d/LiquidService</script>
+						<script>sudo chown liquid:liquid /etc/init.d/LiquidService</script>
 					</postinstallScriptlet>
 					<postinstallScriptlet>
   						<scriptFile>external-resources/setup.sh</scriptFile>
