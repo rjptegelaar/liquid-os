@@ -343,6 +343,10 @@
   						<scriptFile>src/main/bin/preinstall.sh</scriptFile>
   						<fileEncoding>utf-8</fileEncoding>
 					</preinstallScriptlet>
+					<postinstallScriptlet>
+  						<scriptFile>setup.sh</scriptFile>
+  						<fileEncoding>utf-8</fileEncoding>					
+					</postinstallScriptlet>
 				</configuration>
 			</plugin>
 
