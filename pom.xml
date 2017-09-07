@@ -11,6 +11,7 @@
 		<saxon-version>8.7</saxon-version>
 		<querydsl.version>3.7.0</querydsl.version>
 		<swagger-ui-version>2.2.10</swagger-ui-version>
+		<liquid-os-install-dir>/opt/liquid-os</liquid-os-install-dir>
 	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -191,6 +192,28 @@
 				</executions>
 			</plugin>
 			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>replacer</artifactId>
+				<version>1.5.3</version>
+				<executions>
+					<execution>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>replace</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<file>external-resources/LiquidService</file>
+					<replacements>
+						<replacement>
+							<token>REPLACE_WITH_LIQUID_INSTALL_DIRECTORY</token>
+							<value>${liquid-os-install-dir}</value>
+						</replacement>
+					</replacements>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>rpm-maven-plugin</artifactId>
 				<version>2.1.5</version>
@@ -217,7 +240,7 @@
           			</requires>
 					<mappings>
 						<mapping>
-							<directory>/opt/liquid-os/bin</directory>
+							<directory>${liquid-os-install-dir}/bin</directory>
 							<filemode>776</filemode>
 							<username>liquid</username>
 							<groupname>liquid</groupname>
@@ -231,7 +254,7 @@
 							</sources>
 						</mapping>
 						<mapping>
-							<directory>/opt/liquid-os</directory>
+							<directory>${liquid-os-install-dir}</directory>
 							<filemode>776</filemode>
 							<username>liquid</username>
 							<groupname>liquid</groupname>
@@ -245,7 +268,7 @@
 							</sources>
 						</mapping>
 						<mapping>
-							<directory>/opt/liquid-os/bin/ia64</directory>
+							<directory>${liquid-os-install-dir}/bin/ia64</directory>
 							<filemode>776</filemode>
 							<username>liquid</username>
 							<groupname>liquid</groupname>
@@ -259,7 +282,7 @@
 							</sources>
 						</mapping>
 						<mapping>
-							<directory>/opt/liquid-os/bin/amd64</directory>
+							<directory>${liquid-os-install-dir}/bin/amd64</directory>
 							<filemode>776</filemode>
 							<username>liquid</username>
 							<groupname>liquid</groupname>
@@ -273,7 +296,7 @@
 							</sources>
 						</mapping>
 						<mapping>
-							<directory>/opt/liquid-os/config</directory>
+							<directory>${liquid-os-install-dir}/config</directory>
 							<filemode>776</filemode>
 							<username>liquid</username>
 							<groupname>liquid</groupname>
@@ -287,7 +310,7 @@
 							</sources>
 						</mapping>
 						<mapping>
-							<directory>/opt/liquid-os/logs</directory>
+							<directory>${liquid-os-install-dir}/logs</directory>
 							<filemode>776</filemode>
 							<username>liquid</username>
 							<groupname>liquid</groupname>
@@ -302,7 +325,7 @@
 							</sources>
 						</mapping>
 						<mapping>
-							<directory>/opt/liquid-os/lib</directory>
+							<directory>${liquid-os-install-dir}/lib</directory>
 							<filemode>776</filemode>
 							<username>liquid</username>
 							<groupname>liquid</groupname>
@@ -313,7 +336,7 @@
 							</dependency>
 						</mapping>
 						<mapping>
-							<directory>/opt/liquid-os</directory>
+							<directory>${liquid-os-install-dir}</directory>
 							<filemode>776</filemode>
 							<username>liquid</username>
 							<groupname>liquid</groupname>
@@ -337,7 +360,10 @@
 						<script>echo "Installing Liquid Opensource now"</script>
 					</preinstallScriptlet>
 					<preinstallScriptlet>
-						<script>export LIQUID_HOME=/opt/liquid-os</script>
+						<script>export LIQUID_HOME=${liquid-os-install-dir}</script>
+					</preinstallScriptlet>
+					<preinstallScriptlet>
+						<script>chmod +x /etc/init.d/LiquidService</script>
 					</preinstallScriptlet>
 					<preinstallScriptlet>
   						<scriptFile>src/main/bin/preinstall.sh</scriptFile>

@@ -1,6 +1,8 @@
 #!/bin/sh
 #  /etc/init.d/LiquidService
-
+#
+# chkconfig: 345 95 05
+#
 ### BEGIN INIT INFO
 # Provides:          LiquidService
 # Required-Start:    $remote_fs $syslog
@@ -10,23 +12,7 @@
 #                    and should be placed in /etc/init.d
 ### END INIT INFO
 
-if env | grep -q ^LIQUID_HOME=
- then
-  echo LIQUID_HOME IS defined
- else
-	echo LIQUID_HOME is not defined
-	echo This environment variable is needed to run this program
-	exit
-fi
-
-if env | grep -q ^JAVA_HOME=
-then
- echo JAVA_HOME IS defined
-else
- echo JAVA_HOME is not defined
- echo This environment variable is needed to run this program
- exit
-fi
+export LIQUID_HOME=REPLACE_WITH_LIQUID_INSTALL_DIRECTORY
 
 NAME="LiquidService"
 DESC="LiquidService"

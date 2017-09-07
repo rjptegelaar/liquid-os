@@ -1,23 +1,5 @@
 #!/bin/bash
 
-if env | grep -q ^LIQUID_HOME=
- then
-  echo LIQUID_HOME IS defined
- else
-	echo LIQUID_HOME is not defined
-	echo This environment variable is needed to run this program
-	exit
-fi
-
-if env | grep -q ^JAVA_HOME=
-then
- echo JAVA_HOME IS defined
-else
- echo JAVA_HOME is not defined
- echo This environment variable is needed to run this program
- exit
-fi
-
 rm -rf $LIQUID_HOME/config/liquid-server.jks
 
 rm -rf $LIQUID_HOME/config/liquid-server.crt
