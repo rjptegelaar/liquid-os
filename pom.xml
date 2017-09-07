@@ -218,7 +218,7 @@
 					<mappings>
 						<mapping>
 							<directory>/opt/liquid-os/bin</directory>
-							<filemode>770</filemode>
+							<filemode>776</filemode>
 							<username>liquid</username>
 							<groupname>liquid</groupname>
 							<sources>
@@ -232,7 +232,7 @@
 						</mapping>
 						<mapping>
 							<directory>/opt/liquid-os</directory>
-							<filemode>770</filemode>
+							<filemode>776</filemode>
 							<username>liquid</username>
 							<groupname>liquid</groupname>
 							<sources>
@@ -246,7 +246,7 @@
 						</mapping>
 						<mapping>
 							<directory>/opt/liquid-os/bin/ia64</directory>
-							<filemode>770</filemode>
+							<filemode>776</filemode>
 							<username>liquid</username>
 							<groupname>liquid</groupname>
 							<sources>
@@ -260,7 +260,7 @@
 						</mapping>
 						<mapping>
 							<directory>/opt/liquid-os/bin/amd64</directory>
-							<filemode>770</filemode>
+							<filemode>776</filemode>
 							<username>liquid</username>
 							<groupname>liquid</groupname>
 							<sources>
@@ -274,7 +274,7 @@
 						</mapping>
 						<mapping>
 							<directory>/opt/liquid-os/config</directory>
-							<filemode>770</filemode>
+							<filemode>776</filemode>
 							<username>liquid</username>
 							<groupname>liquid</groupname>
 							<sources>
@@ -288,7 +288,7 @@
 						</mapping>
 						<mapping>
 							<directory>/opt/liquid-os/logs</directory>
-							<filemode>770</filemode>
+							<filemode>776</filemode>
 							<username>liquid</username>
 							<groupname>liquid</groupname>
 							<sources>
@@ -303,7 +303,7 @@
 						</mapping>
 						<mapping>
 							<directory>/opt/liquid-os/lib</directory>
-							<filemode>770</filemode>
+							<filemode>776</filemode>
 							<username>liquid</username>
 							<groupname>liquid</groupname>
 							<dependency>
@@ -314,7 +314,7 @@
 						</mapping>
 						<mapping>
 							<directory>/opt/liquid-os</directory>
-							<filemode>770</filemode>
+							<filemode>776</filemode>
 							<username>liquid</username>
 							<groupname>liquid</groupname>
 							<sources>
@@ -323,18 +323,6 @@
 								</source>
 							</sources>
 						</mapping>
-
-						<!-- <mapping>
-							<directory>/etc/init.d</directory>
-							<filemode>750</filemode>
-							<username>liquid</username>
-							<groupname>liquid</groupname>
-							<sources>
-								<source>
-									<location>external-resources/LiquidService</location>
-								</source>
-							</sources>
-						</mapping> -->
 					</mappings>
 					<preinstallScriptlet>
 						<script>echo "Installing Liquid Opensource now"</script>
@@ -352,6 +340,9 @@
   						<scriptFile>external-resources/setup.sh</scriptFile>
   						<fileEncoding>utf-8</fileEncoding>					
 					</postinstallScriptlet>
+					<preinstallScriptlet>
+						<script>echo "Done Installing Liquid Opensource"</script>
+					</preinstallScriptlet>
 				</configuration>
 			</plugin>
 
