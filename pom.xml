@@ -344,7 +344,7 @@
   						<fileEncoding>utf-8</fileEncoding>
 					</preinstallScriptlet>
 					<postinstallScriptlet>
-  						<scriptFile>setup.sh</scriptFile>
+  						<scriptFile>src/main/bin/setup.sh</scriptFile>
   						<fileEncoding>utf-8</fileEncoding>					
 					</postinstallScriptlet>
 				</configuration>
