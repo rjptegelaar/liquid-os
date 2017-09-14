@@ -93,7 +93,7 @@
 						<apiSource>
 							<springmvc>true</springmvc>
 							<locations>com.pte.liquid.web.controller</locations>
-							<schemes>http,https</schemes>
+							<schemes>https</schemes>
 							<host>localhost:${server.port}</host>
 							<basePath>/api-doc</basePath>
 							<info>

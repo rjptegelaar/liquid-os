@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -31,7 +32,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mysema.query.BooleanBuilder;
 import com.mysema.query.types.Predicate;
+import com.pte.liquid.beans.MessagesSearchResult;
 import com.pte.liquid.relay.model.Message;
+import com.pte.liquid.relay.model.Messages;
 import com.pte.liquid.relay.model.QMessage;
 import com.pte.liquid.repo.MessageRepository;
 import com.wordnik.swagger.annotations.Api;
@@ -69,7 +72,7 @@ public class MessageServiceController {
 		PageRequest pg = new PageRequest(page, size);		
 		Page<Message> messagePage = messageRepository.findAll(pg);
 		
-		return gson.toJson(messagePage.getContent());
+		return gson.toJson(convertPageToResult(messagePage));
 	}	
 	
 	/**
@@ -119,7 +122,7 @@ public class MessageServiceController {
 		PageRequest pg = new PageRequest(page, size);		
 		
 		Page<Message> messagePage = messageRepository.findAll(createPredicate(location, correlationID, beforetime, aftertime, messageOrder, parentID), pg);
-		return gson.toJson(messagePage.getContent());
+		return gson.toJson(convertPageToResult(messagePage));
 	}		
 	
 	
@@ -172,7 +175,31 @@ public class MessageServiceController {
 	}
 	
 	
+	private MessagesSearchResult convertPageToResult(Page<Message> messagePage){
+		MessagesSearchResult msr = new MessagesSearchResult();
+		Messages messages = new Messages();
+		
+		//Set content
+		List<Message> resultList = messagePage.getContent();
+		messages.setMsgs(resultList);
+		msr.setMessages(messages);
+		
+		//Set total results
+		msr.setTotalResults(messagePage.getTotalElements());
+		
+		//Set returned amount
+		msr.setReturnedAmount(messagePage.getNumberOfElements());
+		
+		//Set max page size
+		msr.setMaxSize(messagePage.getSize());
+		
 	
+		//Set start of index
+		msr.setCurrentPage(messagePage.getNumber());
+			
+		
+		return msr;	
+	}
 	
 	
 }
