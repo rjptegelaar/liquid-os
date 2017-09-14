@@ -49,7 +49,7 @@ public class SwaggerConfig {
                 "REST API to access Liquid logging data",
                 "REST API gives access to ESB logging data",
                 "https://github.com/rjptegelaar/liquid-os/blob/master/LICENSE",
-                "#PaulTegelaar1",
+                "@PaulTegelaar1",
                 "Apache 2.0",
                 "https://github.com/rjptegelaar/liquid-os/blob/master/LICENSE"
         );
