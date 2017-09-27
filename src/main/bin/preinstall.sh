@@ -12,4 +12,5 @@ if id "liquid" >/dev/null 2>&1; then
 else
         echo "liquid user does not exist, creating one"
         useradd liquid -g liquid
+        usermod -a -G users liquid
 fi

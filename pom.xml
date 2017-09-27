@@ -256,8 +256,6 @@
 						<mapping>
 							<directory>${liquid-os-install-dir}</directory>
 							<filemode>776</filemode>
-							<username>liquid</username>
-							<groupname>liquid</groupname>
 							<sources>
 								<source>
 									<location>external-resources</location>
@@ -270,8 +268,6 @@
 						<mapping>
 							<directory>${liquid-os-install-dir}/bin/ia64</directory>
 							<filemode>776</filemode>
-							<username>liquid</username>
-							<groupname>liquid</groupname>
 							<sources>
 								<source>
 									<location>external-resources/bin/ia64</location>
@@ -284,8 +280,6 @@
 						<mapping>
 							<directory>${liquid-os-install-dir}/bin/amd64</directory>
 							<filemode>776</filemode>
-							<username>liquid</username>
-							<groupname>liquid</groupname>
 							<sources>
 								<source>
 									<location>external-resources/bin/amd64</location>
@@ -298,8 +292,6 @@
 						<mapping>
 							<directory>${liquid-os-install-dir}/config</directory>
 							<filemode>776</filemode>
-							<username>liquid</username>
-							<groupname>liquid</groupname>
 							<sources>
 								<source>
 									<location>config</location>
@@ -312,8 +304,6 @@
 						<mapping>
 							<directory>${liquid-os-install-dir}/logs</directory>
 							<filemode>776</filemode>
-							<username>liquid</username>
-							<groupname>liquid</groupname>
 							<sources>
 								<source>
 									<location>logs</location>
@@ -327,8 +317,6 @@
 						<mapping>
 							<directory>${liquid-os-install-dir}/lib</directory>
 							<filemode>776</filemode>
-							<username>liquid</username>
-							<groupname>liquid</groupname>
 							<dependency>
 								<includes>
 									<include>*:*</include>
@@ -338,8 +326,6 @@
 						<mapping>
 							<directory>${liquid-os-install-dir}</directory>
 							<filemode>776</filemode>
-							<username>liquid</username>
-							<groupname>liquid</groupname>
 							<sources>
 								<source>
 									<location>target/liquid-os.jar</location>
@@ -363,12 +349,12 @@
 						<script>export LIQUID_HOME=${liquid-os-install-dir}</script>
 					</preinstallScriptlet>
 					<preinstallScriptlet>
-						<script>chmod +x /etc/init.d/LiquidService</script>
-					</preinstallScriptlet>
-					<preinstallScriptlet>
   						<scriptFile>src/main/bin/preinstall.sh</scriptFile>
   						<fileEncoding>utf-8</fileEncoding>
 					</preinstallScriptlet>
+					<postinstallScriptlet>
+						<script>chmod +x /etc/init.d/LiquidService</script>
+					</postinstallScriptlet>
 					<postinstallScriptlet>
 						<script>echo "Done Installing Liquid Opensource"</script>
 					</postinstallScriptlet>
