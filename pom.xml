@@ -370,10 +370,6 @@
   						<fileEncoding>utf-8</fileEncoding>
 					</preinstallScriptlet>
 					<postinstallScriptlet>
-  						<scriptFile>external-resources/setup.sh</scriptFile>
-  						<fileEncoding>utf-8</fileEncoding>					
-					</postinstallScriptlet>
-					<postinstallScriptlet>
 						<script>echo "Done Installing Liquid Opensource"</script>
 					</postinstallScriptlet>
 				</configuration>
