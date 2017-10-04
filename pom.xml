@@ -318,10 +318,6 @@
   						<fileEncoding>utf-8</fileEncoding>
 					</preinstallScriptlet>
 					<postinstallScriptlet>
-  						<scriptFile>src/main/bin/postinstall.sh</scriptFile>
-  						<fileEncoding>utf-8</fileEncoding>
-					</postinstallScriptlet>
-					<postinstallScriptlet>
 						<script>echo "Done Installing Liquid Opensource"</script>
 					</postinstallScriptlet>
 				</configuration>
