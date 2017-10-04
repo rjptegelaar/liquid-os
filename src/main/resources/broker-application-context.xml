@@ -66,8 +66,8 @@
 
 		<amq:sslContext>
 			<amq:sslContext keyStore="config/liquid-server.jks"
-				keyStorePassword="${liquid.master.password}" keyStoreKeyPassword="${liquid.master.password}"
-				trustStore="config/liquid-server-trust.jks" trustStorePassword="${liquid.master.password}"
+				keyStorePassword="${liquid.keystore.password}" keyStoreKeyPassword="${liquid.keystore.password}"
+				trustStore="config/liquid-server-trust.jks" trustStorePassword="${liquid.keystore.password}"
 				keyStoreType="JKS" trustStoreType="JKS"  />
 
 		</amq:sslContext>
