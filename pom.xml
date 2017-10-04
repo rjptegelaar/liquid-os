@@ -223,7 +223,7 @@
 										<include>*</include>
 									</includes>
 								</source>
-							</sources>
+							</sources>							
 						</mapping>
 						<mapping>
 							<directory>${liquid-os-install-dir}</directory>
