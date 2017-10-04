@@ -12,7 +12,7 @@
 #                    and should be placed in /etc/init.d
 ### END INIT INFO
 
-export LIQUID_HOME=REPLACE_WITH_LIQUID_INSTALL_DIRECTORY
+export LIQUID_HOME=/opt/liquid-os
 
 NAME="LiquidService"
 DESC="LiquidService"

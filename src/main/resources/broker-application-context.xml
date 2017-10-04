@@ -53,13 +53,13 @@
 		<amq:systemUsage>
 			<amq:systemUsage>
 				<amq:memoryUsage>
-					<amq:memoryUsage limit="512 mb"/>
+					<amq:memoryUsage limit="${amq.memoryUsage}"/>
 				</amq:memoryUsage>
 				<amq:storeUsage>
-            		<amq:storeUsage limit="10 gb"/>
+            		<amq:storeUsage limit="${amq.storeUsage}"/>
         		</amq:storeUsage>
         		<amq:tempUsage>
-            		<amq:tempUsage limit="5 gb"/>
+            		<amq:tempUsage limit="${amq.tempUsage}"/>
         		</amq:tempUsage>
 			</amq:systemUsage>
 		</amq:systemUsage>

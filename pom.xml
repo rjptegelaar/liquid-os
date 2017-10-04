@@ -188,7 +188,7 @@
 					</replacements>
 				</configuration>
 			</plugin>
-			<!--<plugin>
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>rpm-maven-plugin</artifactId>
 				<version>2.1.5</version>
@@ -212,7 +212,6 @@
 					</defineStatements>
 					<requires>
             			<require>jsvc</require>
-            			<require>java-1.8.0-openjdk</require>
           			</requires>
 					<mappings>
 						<mapping>
@@ -325,7 +324,7 @@
 						<script>echo "Done Installing Liquid Opensource"</script>
 					</postinstallScriptlet>
 				</configuration>
-			</plugin>-->
+			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
