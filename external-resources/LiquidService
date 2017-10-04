@@ -40,10 +40,10 @@ USER="liquid"
 PID="/var/run/$NAME.pid"
 
 # System.out writes to this file...
-LOG_OUT="$FILE_PATH/log/$NAME.out"
+LOG_OUT="/var/log/$NAME.out"
 
 # System.err writes to this file...
-LOG_ERR="$FILE_PATH/log/$NAME.err"
+LOG_ERR="/var/log/$NAME.err"
 
 jsvc_exec()
 {   
