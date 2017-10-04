@@ -318,8 +318,17 @@
   						<fileEncoding>utf-8</fileEncoding>
 					</preinstallScriptlet>
 					<postinstallScriptlet>
+						<script>cp /opt/liquid-os/LiquidService /etc/init.d/</script>
+					</postinstallScriptlet>
+					<postinstallScriptlet>
 						<script>chmod +x /etc/init.d/LiquidService</script>
 					</postinstallScriptlet>
+					<postinstallScriptlet>
+						<script>chmod +x /opt/liquid-os/setup.sh</script>
+					</postinstallScriptlet>
+					<postinstallScriptlet>
+						<script>chown -R liquid:liquid /opt/liquid-os/</script>
+					</postinstallScriptlet>					
 					<postinstallScriptlet>
 						<script>echo "Done Installing Liquid Opensource"</script>
 					</postinstallScriptlet>

@@ -13,6 +13,7 @@
 ### END INIT INFO
 
 export LIQUID_HOME=/opt/liquid-os
+export JAVA_HOME=
 
 NAME="LiquidService"
 DESC="LiquidService"
