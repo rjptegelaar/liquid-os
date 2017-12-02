@@ -10,6 +10,7 @@ or the rpm at:
 [ ![Download](https://api.bintray.com/packages/paultegelaar/RPM/liquid-os/images/download.svg) ](https://bintray.com/paultegelaar/RPM/liquid-os/_latestVersion)
 
 Download the relay (agent):
+
 [ ![Download](https://api.bintray.com/packages/paultegelaar/maven/relay/images/download.svg) ](https://bintray.com/paultegelaar/maven/relay/_latestVersion)
 
 Download the interceptors for your ESB:
@@ -27,6 +28,10 @@ Fuse ESB:
 Sonic ESB:
 
 [ ![Download](https://api.bintray.com/packages/paultegelaar/maven/liquid-relay-sonic-interceptor/images/download.svg) ](https://bintray.com/paultegelaar/maven/liquid-relay-sonic-interceptor/_latestVersion)
+
+Camel:
+
+[ ![Download](https://api.bintray.com/packages/paultegelaar/maven/liquid-relay-camel/images/download.svg) ](https://bintray.com/paultegelaar/maven/liquid-relay-camel/_latestVersion)
 
 There is a commercial version of the product. Information concerning the commercial version can be obtained at:
 
