@@ -2,6 +2,7 @@
 Liquid is an Opensource Message Monitoring solution for several ESB systems.
 
 Donwload the server (zip) at:
+
 [ ![Download](https://api.bintray.com/packages/paultegelaar/maven/liquid-os/images/download.svg) ](https://bintray.com/paultegelaar/maven/liquid-os/_latestVersion)
 
 or the rpm at:
