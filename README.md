@@ -15,7 +15,7 @@ Download the relay (agent):
 
 Download the interceptors for your ESB:
 
-#  Talend ESB:
+Talend ESB:
 
 Component for studio:
 
@@ -25,15 +25,15 @@ OSGI Bundle for deployment:
 
 [ ![Download](https://api.bintray.com/packages/paultegelaar/maven/liquid-relay-camel-osgi/images/download.svg) ](https://bintray.com/paultegelaar/maven/liquid-relay-camel-osgi/_latestVersion)
 
-#  Fuse ESB:
+Fuse ESB:
 
 [ ![Download](https://api.bintray.com/packages/paultegelaar/maven/liquid-relay-fuse-esb-interceptor/images/download.svg) ](https://bintray.com/paultegelaar/maven/liquid-relay-fuse-esb-interceptor/_latestVersion)
 
-#  Sonic ESB:
+Sonic ESB:
 
 [ ![Download](https://api.bintray.com/packages/paultegelaar/maven/liquid-relay-sonic-interceptor/images/download.svg) ](https://bintray.com/paultegelaar/maven/liquid-relay-sonic-interceptor/_latestVersion)
 
-#  Camel:
+Camel:
 
 [ ![Download](https://api.bintray.com/packages/paultegelaar/maven/liquid-relay-camel/images/download.svg) ](https://bintray.com/paultegelaar/maven/liquid-relay-camel/_latestVersion)
 
