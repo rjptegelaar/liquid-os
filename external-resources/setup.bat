@@ -1,7 +1,7 @@
 @echo off
 
 echo ======================================================================
-set /P MasterPassword=Please enter a master password: 
+set /P MasterPassword=Please enter a keystore password: 
 echo ======================================================================
 
 call del /Q %~dp0config\liquid-server.jks

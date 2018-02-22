@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nl.paultegelaar.liquid</groupId>
 	<artifactId>liquid-os</artifactId>
@@ -12,6 +13,7 @@
 		<querydsl.version>3.7.0</querydsl.version>
 		<swagger-ui-version>2.2.10</swagger-ui-version>
 		<liquid-os-install-dir>/opt/liquid-os</liquid-os-install-dir>
+		<org.springframework.security.version>3.2.3.RELEASE</org.springframework.security.version>
 	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -200,7 +202,7 @@
 						</goals>
 					</execution>
 				</executions>
-				<configuration>								
+				<configuration>
 					<license>The Apache License, Version 2.0</license>
 					<distribution>${project.artifactId}</distribution>
 					<group>Applications/Engineering</group>
@@ -211,8 +213,8 @@
 						<defineStatement>_unpackaged_files_terminate_build 0</defineStatement>
 					</defineStatements>
 					<requires>
-            			<require>jsvc</require>
-          			</requires>
+						<require>jsvc</require>
+					</requires>
 					<mappings>
 						<mapping>
 							<directory>${liquid-os-install-dir}/bin</directory>
@@ -223,7 +225,7 @@
 										<include>*</include>
 									</includes>
 								</source>
-							</sources>							
+							</sources>
 						</mapping>
 						<mapping>
 							<directory>${liquid-os-install-dir}</directory>
@@ -266,7 +268,7 @@
 									<includes>
 										<include>application.properties</include>
 									</includes>
-								</source>								
+								</source>
 							</sources>
 						</mapping>
 						<mapping>
@@ -299,7 +301,7 @@
 						</mapping>
 
 						<mapping>
-							<directory>/etc/init.d</directory>						
+							<directory>/etc/init.d</directory>
 							<sources>
 								<source>
 									<location>external-resources/LiquidService</location>
@@ -314,8 +316,8 @@
 						<script>export LIQUID_HOME=${liquid-os-install-dir}</script>
 					</preinstallScriptlet>
 					<preinstallScriptlet>
-  						<scriptFile>src/main/bin/preinstall.sh</scriptFile>
-  						<fileEncoding>utf-8</fileEncoding>
+						<scriptFile>src/main/bin/preinstall.sh</scriptFile>
+						<fileEncoding>utf-8</fileEncoding>
 					</preinstallScriptlet>
 					<postinstallScriptlet>
 						<script>echo "Done Installing Liquid Opensource"</script>
@@ -340,14 +342,16 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>curl</executable>							
-							<commandlineArgs>-T${WORKSPACE}/target/rpm/liquid-os/RPMS/noarch/liquid-os-${releaseVersion}-1.noarch.rpm -u${bintray-apiuser}:${bintray-apikey} https://api.bintray.com/content/paultegelaar/RPM/liquid-os/${releaseVersion}/</commandlineArgs>
+							<executable>curl</executable>
+							<commandlineArgs>-T${WORKSPACE}/target/rpm/liquid-os/RPMS/noarch/liquid-os-${releaseVersion}-1.noarch.rpm
+								-u${bintray-apiuser}:${bintray-apikey}
+								https://api.bintray.com/content/paultegelaar/RPM/liquid-os/${releaseVersion}/</commandlineArgs>
 							<environmentVariables>
 								<releaseVersion>dummy</releaseVersion>
 								<WORKSPACE>dummy</WORKSPACE>
 							</environmentVariables>
-							<outputFile>curl-fault.log</outputFile>							
-						</configuration>						
+							<outputFile>curl-fault.log</outputFile>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
@@ -386,6 +390,19 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 		</dependency>
+
+		<!-- SPRING Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${org.springframework.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${org.springframework.security.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-broker</artifactId>

@@ -26,7 +26,7 @@ import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 @Configuration
 @EnableSwagger
 @ComponentScan("com.pte.liquid.web.controller")
-public class SwaggerConfig {
+public class SwaggerConfiguration {
 
     public static final String DEFAULT_INCLUDE_PATTERNS = "/liquid/.*";
 

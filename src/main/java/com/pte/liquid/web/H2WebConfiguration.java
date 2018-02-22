@@ -24,7 +24,7 @@ public class H2WebConfiguration{
 	@Bean
     ServletRegistrationBean h2servletRegistration(){
         ServletRegistrationBean registrationBean = new ServletRegistrationBean( new WebServlet());
-        registrationBean.addUrlMappings("/liquid/console/*");
+        registrationBean.addUrlMappings("/h2/console/*");
         return registrationBean;
     }
 	
