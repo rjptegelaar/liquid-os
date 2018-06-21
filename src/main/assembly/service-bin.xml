@@ -37,6 +37,8 @@
 			<outputDirectory>/config</outputDirectory>
 			<includes>
 				<include>application.properties</include>
+				<inclide>liquid-server-trust.jks</inclide>
+				<inclide>liquid-server.jks</inclide>
 			</includes>
 		</fileSet>
     	<fileSet> 

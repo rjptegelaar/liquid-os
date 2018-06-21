@@ -20,8 +20,8 @@
 		<property name="dataSource" ref="liquidDataSource"/>
 		<property name="jpaProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.dialect">${liquid.db.hibernate.dialect}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${liquid.db.hbm2dll.auto}</prop>
 			</props>
 		</property>
 	</bean>
@@ -41,11 +41,11 @@
         <property name="connectionPoolDataSource">
             <bean
                 class="org.apache.commons.dbcp2.cpdsadapter.DriverAdapterCPDS">
-                <property name="driver" value="org.h2.Driver" />
+                <property name="driver" value="${liquid.db.driver}" />
                 <property name="url"
-                    value="jdbc:h2:./${liquid.data.directory}/liquiddb" />
-                <property name="user" value="${liquid.master.username}" />
-                <property name="password" value="${liquid.master.password}" />
+                    value="${liquid.db.url}" />
+                <property name="user" value="${liquid.db.username}" />
+                <property name="password" value="${liquid.db.password}" />
             </bean>
         </property>
     </bean>
