@@ -15,6 +15,7 @@ package com.pte.liquid.beans;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  * 
@@ -27,8 +28,14 @@ import javax.persistence.Id;
 public class DeleteFlow {
 
 	
+	@Transient
 	private long messagecount;
-	private String id, name;
+	
+	@Transient
+	private String id;
+	
+	@Transient
+	private String name;
 	
 	public long getMessagecount() {
 		return messagecount;

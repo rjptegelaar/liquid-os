@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nl.paultegelaar.liquid</groupId>
 	<artifactId>liquid-os</artifactId>
@@ -13,6 +14,7 @@
 		<swagger-ui-version>2.2.10</swagger-ui-version>
 		<liquid-os-install-dir>/opt/liquid-os</liquid-os-install-dir>
 		<org.springframework.security.version>3.2.3.RELEASE</org.springframework.security.version>
+		<camel.version>2.16.5</camel.version>
 	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -342,7 +344,9 @@
 						</goals>
 						<configuration>
 							<executable>curl</executable>
-							<commandlineArgs>-T${WORKSPACE}/target/rpm/liquid-os/RPMS/noarch/liquid-os-${releaseVersion}-1.noarch.rpm -u${bintray-apiuser}:${bintray-apikey} https://api.bintray.com/content/paultegelaar/RPM/liquid-os/${releaseVersion}/</commandlineArgs>
+							<commandlineArgs>-T${WORKSPACE}/target/rpm/liquid-os/RPMS/noarch/liquid-os-${releaseVersion}-1.noarch.rpm
+								-u${bintray-apiuser}:${bintray-apikey}
+								https://api.bintray.com/content/paultegelaar/RPM/liquid-os/${releaseVersion}/</commandlineArgs>
 							<environmentVariables>
 								<releaseVersion>dummy</releaseVersion>
 								<WORKSPACE>dummy</WORKSPACE>
@@ -436,44 +440,44 @@
 		<dependency>
 			<groupId>nl.paultegelaar.liquid.relay</groupId>
 			<artifactId>RelayInterfaces</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-core</artifactId>
-			<version>2.15.3</version>
+			<version>${camel.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-spring-boot</artifactId>
-			<version>2.15.3</version>
+			<version>${camel.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-jms</artifactId>
-			<version>2.15.3</version>
+			<version>${camel.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-jaxb</artifactId>
-			<version>2.15.3</version>
+			<version>${camel.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-jpa</artifactId>
-			<version>2.15.3</version>
+			<version>${camel.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-sql</artifactId>
-			<version>2.15.3</version>
+			<version>${camel.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-servlet</artifactId>
-			<version>2.15.3</version>
+			<version>${camel.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.woodstox</groupId>
@@ -531,7 +535,7 @@
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-test</artifactId>
-			<version>2.15.3</version>
+			<version>${camel.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -553,6 +557,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 	</dependencies>
 	<distributionManagement>

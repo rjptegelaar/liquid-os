@@ -15,20 +15,17 @@ package com.pte.liquid.camel;
 
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.pte.liquid.camel.processors.ConvertJsonMessageProcessor;
 
 @Component
 public class StoreLiquidMessageRoute extends RouteBuilder{	
-
+	
+	@Autowired
+	private Processor convertJsonMessageProcessor;
 	
     @Override
-    public void configure() throws Exception {
-
-    	Processor convertJsonMessageProcessor = new ConvertJsonMessageProcessor();
-    	
-    	
+    public void configure() throws Exception {    	    
     	from("jms:queue:com.pte.liquid.store.in").process(convertJsonMessageProcessor).to("jpa:com.pte.liquid.relay.model.Message?transactionManager=#liquidTxManager");
     }
 

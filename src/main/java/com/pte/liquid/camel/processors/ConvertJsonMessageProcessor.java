@@ -13,18 +13,25 @@
 //limitations under the License.
 package com.pte.liquid.camel.processors;
 
-import org.apache.camel.Exchange;
+import java.util.Date;
 
+import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.pte.liquid.relay.model.Message;
 
+@Component
 public class ConvertJsonMessageProcessor implements Processor{
 	
 	private GsonBuilder gsonBuilder = new GsonBuilder();
 	private Gson gson;
+	
+	@Value("${liquid.purge.data.days}")
+	private long daysInPast;
 	
 	public ConvertJsonMessageProcessor(){
 		gsonBuilder.excludeFieldsWithoutExposeAnnotation();
@@ -34,6 +41,29 @@ public class ConvertJsonMessageProcessor implements Processor{
 	
 	@Override
 	public void process(Exchange exchange) throws Exception {
-		exchange.getIn().setBody(gson.fromJson(exchange.getIn().getBody(String.class),Message.class));
+	
+		
+		Message msg = gson.fromJson(exchange.getIn().getBody(String.class),Message.class);
+		//Set time to live based on property
+		Date now = new Date();
+		
+		long ttl = now.getTime() + (1000*60*60*24*daysInPast); 
+		
+		Date ttlDate = new Date(ttl);
+		msg.setTtlMillis(ttl);		
+		msg.setTtl(ttlDate);
+		
+		exchange.getIn().setBody(msg);
 	}
+
+	public long getDaysInPast() {
+		return daysInPast;
+	}
+
+	public void setDaysInPast(long daysInPast) {
+		this.daysInPast = daysInPast;
+	}
+	
+	
+	
 }

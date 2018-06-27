@@ -15,6 +15,7 @@ package com.pte.liquid.beans;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -30,8 +31,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class CrawlCount {
 
 	
+	@Transient
 	private long nrcrawled;
+	
+	@Transient
 	private String correlationid;
+	
+	@Transient
 	private String flowKey;
 	
 		
