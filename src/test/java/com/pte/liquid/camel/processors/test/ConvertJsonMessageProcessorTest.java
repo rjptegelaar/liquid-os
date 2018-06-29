@@ -15,7 +15,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.pte.liquid.camel.processors.ConvertJsonMessageProcessor;
-import com.pte.liquid.camel.processors.ConvertMessageJsonProcessor;
 import com.pte.liquid.relay.model.Message;
 
 @RunWith(SpringJUnit4ClassRunner.class)
