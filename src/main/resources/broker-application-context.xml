@@ -29,7 +29,7 @@
 		<amq:plugins>
 			<amq:simpleAuthenticationPlugin anonymousAccessAllowed="true">
 				<amq:users>
-					<amq:authenticationUser groups="admins" username="${liquid.master.username}" password="${liquid.master.password}"/>
+					<amq:authenticationUser groups="admins" username="${liquid.jms.client.username}" password="${liquid.jms.client.password}"/>
 					<amq:authenticationUser groups="anonymous" username="" password=""/>
 				</amq:users>				
 			</amq:simpleAuthenticationPlugin>
@@ -74,7 +74,7 @@
 
 	</amq:broker>
 
-	<amq:connectionFactory id="liquidJmsFactory" brokerURL="vm://localhost" userName="${liquid.master.username}" password="${liquid.master.password}"/>
+	<amq:connectionFactory id="liquidJmsFactory" brokerURL="${liquid.jms.client.url}" userName="${liquid.jms.client.username}" password="${liquid.jms.client.password}"/>
 
 
 	<bean id="liquidSingleConnectionFactory"
