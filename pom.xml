@@ -14,6 +14,12 @@
 		<liquid-os-install-dir>/opt/liquid-os</liquid-os-install-dir>
 		<org.springframework.security.version>3.2.3.RELEASE</org.springframework.security.version>
 		<camel.version>2.16.5</camel.version>
+		<surefire-junit47.version>2.18.1</surefire-junit47.version>
+		<woodstox-core-asl.version>4.4.1</woodstox-core-asl.version>
+		<commons-codec.version>1.10</commons-codec.version>
+		<xstream.version>1.3.1</xstream.version>
+		<commons-daemon.version>1.0.15</commons-daemon.version>
+		<swagger-springmvc.version>1.0.2</swagger-springmvc.version>
 	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -28,7 +34,7 @@
 	</scm>
 	<build>
 		<finalName>liquid-os</finalName>
-		<plugins>
+		<plugins>			
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
@@ -128,28 +134,10 @@
 					<dependency>
 						<groupId>org.apache.maven.surefire</groupId>
 						<artifactId>surefire-junit47</artifactId>
-						<version>2.18.1</version>
+						<version>${surefire-junit47.version}</version>
 					</dependency>
 				</dependencies>
-			</plugin>
-			<plugin>
-				<groupId>com.googlecode.maven-download-plugin</groupId>
-				<artifactId>download-maven-plugin</artifactId>
-				<version>1.2.1</version>
-				<executions>
-					<execution>
-						<id>swagger-ui</id>
-						<goals>
-							<goal>wget</goal>
-						</goals>
-						<configuration>
-							<url>https://github.com/swagger-api/swagger-ui/archive/v${swagger-ui-version}.tar.gz</url>
-							<unpack>true</unpack>
-							<outputDirectory>${project.build.directory}</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+			</plugin>			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-gpg-plugin</artifactId>
@@ -479,7 +467,7 @@
 		<dependency>
 			<groupId>org.codehaus.woodstox</groupId>
 			<artifactId>woodstox-core-asl</artifactId>
-			<version>4.4.1</version>
+			<version>${woodstox-core-asl.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -488,7 +476,7 @@
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
-			<version>1.10</version>
+			<version>${commons-codec.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
@@ -497,12 +485,12 @@
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
-			<version>1.3.1</version>
+			<version>${xstream.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-daemon</groupId>
 			<artifactId>commons-daemon</artifactId>
-			<version>1.0.15</version>
+			<version>${commons-daemon.version}</version>
 		</dependency>
 
 
@@ -524,7 +512,7 @@
 		<dependency>
 			<groupId>com.mangofactory</groupId>
 			<artifactId>swagger-springmvc</artifactId>
-			<version>1.0.2</version>
+			<version>${swagger-springmvc.version}</version>
 		</dependency>
 
 
