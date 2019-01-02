@@ -27,8 +27,11 @@ public class FlowCheckProcessor implements Processor{
 		@SuppressWarnings("unchecked")
 		Map<String, String> results = exchange.getIn().getBody(Map.class);		
 		
-		//Set nr on header so filtering is easy
-		exchange.getIn().setHeader("NR", results.get("NR"));
+		if(results!=null) {
+			//Set nr on header so filtering is easy
+			exchange.getIn().setHeader("NR", results.get("NR"));
+		}
+
 		
 	}
 }

@@ -13,7 +13,7 @@
 		<swagger-ui-version>2.2.10</swagger-ui-version>
 		<liquid-os-install-dir>/opt/liquid-os</liquid-os-install-dir>
 		<org.springframework.security.version>3.2.3.RELEASE</org.springframework.security.version>
-		<camel.version>2.16.5</camel.version>
+		<camel.version>2.18.5</camel.version>
 		<surefire-junit47.version>2.18.1</surefire-junit47.version>
 		<woodstox-core-asl.version>4.4.1</woodstox-core-asl.version>
 		<commons-codec.version>1.10</commons-codec.version>
