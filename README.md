@@ -36,7 +36,3 @@ Sonic ESB:
 Camel:
 
 [ ![Download](https://api.bintray.com/packages/paultegelaar/maven/liquid-relay-camel/images/download.svg) ](https://bintray.com/paultegelaar/maven/liquid-relay-camel/_latestVersion)
-
-There is a commercial version of the product. Information concerning the commercial version can be obtained at:
-
-http://www.progaia.nl/glimpse-esb-tool/
